@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#172735">
   <meta name="description" content="Catatan David tentang rekan kerja, rasa percaya, dan perjalanan berikutnya. Let’s Journey into the World, Vol. 01.">
   <title>Let’s Journey into the World — Cerita David</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23172735'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='49' fill='%23f7e8c9'%3Ed%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/davidaryasetia-favicon-96.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/davidaryasetia-favicon.svg">
   <style>
     :root {
       color-scheme: light;
@@ -83,9 +84,24 @@
     .song-note { display: flex; gap: 1rem; align-items: center; padding: 1.2rem 0; margin: 2rem 0; border-block: 1px solid var(--line); }
     .song-note .music-mark { font-family: var(--serif); font-size: 2.3rem; color: var(--gold); width: 2.5rem; text-align: center; }
     .song-copy { flex: 1; min-width: 0; }
-    .song-copy span { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .4rem; }
+    .song-copy > span { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .4rem; }
     .song-copy a { font-size: .9375rem; font-weight: 600; line-height: 1.5; }
     .song-copy small { display: block; font-size: .8125rem; color: var(--muted); margin-top: .3rem; }
+    .song-title { display: block; font-size: .9375rem; line-height: 1.5; }
+    .song-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; margin-top: .75rem; }
+    .song-actions a { font-size: .8125rem; font-weight: 400; }
+    .song-play { min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--ink); border-radius: 100px; background: var(--ink); color: white; font-size: .875rem; }
+    .song-play:hover { background: #2e4456; }
+    .song-player { position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 10; width: min(360px, calc(100% - 2rem)); max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); overflow: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 40px #17273530; }
+    .song-player[hidden], .song-play[hidden] { display: none; }
+    .song-player-header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .5rem .75rem; }
+    .song-player-title { min-width: 0; margin: 0; font-size: .875rem; line-height: 1.5; font-weight: 600; }
+    .song-player-close { flex-shrink: 0; min-height: 44px; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); font-size: .8125rem; }
+    .song-player-close:hover { background: #ecece6; }
+    .song-video { width: 100%; aspect-ratio: 16 / 9; min-height: 200px; background: #172735; }
+    .song-video iframe { display: block; width: 100%; height: 100%; min-height: 200px; border: 0; }
+    .song-player-footer { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem .75rem; font-size: .75rem; color: var(--muted); }
+    body.song-space { padding-bottom: 21rem; }
     .memories { width: min(960px, calc(100% - 3rem)); margin: 1rem auto 5rem; }
     .memory-gallery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
     .memory-photo { margin: 0; padding: .85rem .85rem 1.15rem; background: #fff; border: 1px solid #deded8; box-shadow: 0 12px 36px #1727350d; transform: rotate(-2deg); }
@@ -307,7 +323,15 @@
             <p>Aku jadi teringat lagu Bernadya, <em>Kita Buat Menyenangkan</em>. Rasanya cocok buat suasana sekarang. Selagi masih ketemu di kantor, ya tetap kerja seperti biasa, ngobrol, dan ketawa kalau ada kesempatan.</p>
             <aside class="song-note" aria-label="Lagu yang menemani cerita">
               <span class="music-mark" aria-hidden="true">♪</span>
-              <div class="song-copy"><span>Kalau ingin ditemani lagu</span><a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Kita Buat Menyenangkan — Bernadya</a><small>Video resmi di YouTube · terbuka di tab baru</small></div>
+              <div class="song-copy">
+                <span>Kalau ingin ditemani lagu</span>
+                <strong class="song-title">Kita Buat Menyenangkan — Bernadya</strong>
+                <div class="song-actions">
+                  <button class="song-play" id="playSong" type="button" aria-controls="songPlayer" aria-expanded="false" hidden><span aria-hidden="true">▶</span> Putar lagu</button>
+                  <a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Buka di YouTube</a>
+                </div>
+                <small>Video resmi · bisa diputar sambil membaca</small>
+              </div>
             </aside>
             <p>Ada juga kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.</p>
           </div>
@@ -342,6 +366,18 @@
   </main>
   <footer class="site-footer"><span>cerita david. &nbsp;·&nbsp; Vol. 01</span><span>Ditulis oleh David.</span></footer>
 
+  <section class="song-player" id="songPlayer" aria-labelledby="songPlayerTitle" hidden>
+    <div class="song-player-header">
+      <h2 class="song-player-title" id="songPlayerTitle">Kita Buat Menyenangkan</h2>
+      <button class="song-player-close" id="closeSong" type="button" aria-label="Tutup player dan hentikan lagu">Tutup <span aria-hidden="true">×</span></button>
+    </div>
+    <div class="song-video" id="songVideo"></div>
+    <div class="song-player-footer">
+      <span>Bernadya</span>
+      <a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Buka di YouTube</a>
+    </div>
+  </section>
+
   <dialog class="photo-dialog" id="photoViewer" aria-label="Foto kenangan">
     <div class="photo-view">
       <div class="photo-toolbar"><button class="photo-close" id="closePhoto" type="button">Tutup foto <span aria-hidden="true">×</span></button></div>
@@ -366,7 +402,7 @@
         <button type="button" class="open-button" id="openStory" autofocus>Buka ceritanya</button>
         <button type="button" class="later-button" id="laterButton">Tolak</button>
       </div>
-      <p class="cover-status" id="coverStatus" role="status" aria-live="polite">Baca dulu, ya. Ada sedikit cerita buat Mbak.</p>
+      <p class="cover-status" id="coverStatus" role="status" aria-live="polite">Baca dulu, ya. Ada sedikit cerita buat Mbak Vita, hehe 😄</p>
     </div>
   </dialog>
 
@@ -391,11 +427,13 @@
         laterButton.style.top = '';
         laterButton.style.right = '';
         laterButton.textContent = 'Tolak';
-        status.textContent = 'Baca dulu, ya. Ada sedikit cerita buat Mbak.';
+        status.textContent = 'Baca dulu, ya. Ada sedikit cerita buat Mbak Vita, hehe 😄';
       }
 
       function showCover(isReturn) {
         if (cover.open || opening) return;
+        const readingPosition = { left: window.scrollX, top: window.scrollY };
+        closeSongPlayer(false);
         resetCover();
         cover.classList.remove('leaving', 'returning');
         if (isReturn && !reducedMotion.matches) cover.classList.add('returning');
@@ -403,6 +441,7 @@
         document.body.classList.add('cover-open');
         cover.scrollTop = 0;
         openButton.focus({ preventScroll: true });
+        window.scrollTo({ ...readingPosition, behavior: 'instant' });
       }
 
       function revealStory() {
@@ -469,6 +508,60 @@
       cover.addEventListener('cancel', event => { event.preventDefault(); revealStory(); });
       closeButton.addEventListener('click', () => showCover(true));
 
+      const playSong = document.getElementById('playSong');
+      const songPlayer = document.getElementById('songPlayer');
+      const songVideo = document.getElementById('songVideo');
+      const closeSong = document.getElementById('closeSong');
+
+      function releaseSongSpace() {
+        if (!songPlayer.hidden || !document.body.classList.contains('song-space')) return;
+        const spacing = parseFloat(window.getComputedStyle(document.body).paddingBottom) || 0;
+        const maximumWithoutSpace = Math.max(0, document.documentElement.scrollHeight - spacing - window.innerHeight);
+        // Keep the reading position if removing the spacer would shorten the page below it.
+        if (window.scrollY <= maximumWithoutSpace) document.body.classList.remove('song-space');
+      }
+
+      function closeSongPlayer(restoreFocus = true) {
+        if (songPlayer.hidden) return;
+        // Removing the iframe stops playback and releases its resources.
+        songVideo.replaceChildren();
+        songPlayer.hidden = true;
+        updateReadingLine();
+        playSong.setAttribute('aria-expanded', 'false');
+        playSong.textContent = '▶ Putar lagu';
+        if (restoreFocus) playSong.focus({ preventScroll: true });
+      }
+
+      playSong.addEventListener('click', () => {
+        if (cover.open || document.getElementById('photoViewer').open) return;
+        if (songPlayer.hidden) {
+          // No iframe, remote thumbnail, or YouTube script is loaded before this click.
+          const frame = document.createElement('iframe');
+          frame.title = 'Kita Buat Menyenangkan — Bernadya, video resmi YouTube';
+          frame.width = '360';
+          frame.height = '203';
+          frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+          frame.allowFullscreen = true;
+          frame.referrerPolicy = 'strict-origin-when-cross-origin';
+          frame.src = 'https://www.youtube-nocookie.com/embed/sdnDInjdWjw?autoplay=1&playsinline=1&controls=1&rel=0';
+          songPlayer.hidden = false;
+          songVideo.replaceChildren(frame);
+          document.body.classList.add('song-space');
+          updateReadingLine();
+          playSong.setAttribute('aria-expanded', 'true');
+          playSong.textContent = 'Lihat player';
+        }
+        closeSong.focus({ preventScroll: true });
+      });
+      closeSong.addEventListener('click', () => closeSongPlayer());
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !songPlayer.hidden && !cover.open && !document.getElementById('photoViewer').open) {
+          event.preventDefault();
+          closeSongPlayer();
+        }
+      });
+      playSong.hidden = false;
+
       const photoViewer = document.getElementById('photoViewer');
       const fullPhoto = document.getElementById('fullPhoto');
       const fullPhotoCaption = document.getElementById('fullPhotoCaption');
@@ -479,6 +572,7 @@
           fullPhoto.alt = image.alt;
           fullPhotoCaption.textContent = button.closest('figure').querySelector('figcaption').textContent;
           if (typeof photoViewer.showModal === 'function') {
+            closeSongPlayer(false);
             photoViewer.showModal();
             document.body.classList.add('photo-open');
           }
@@ -509,6 +603,7 @@
       let scrollScheduled = false;
       const line = document.getElementById('readingLine');
       function updateReadingLine() {
+        releaseSongSpace();
         const range = document.documentElement.scrollHeight - window.innerHeight;
         const progress = range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0;
         line.style.transform = 'scaleX(' + progress + ')';
