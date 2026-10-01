@@ -46,8 +46,8 @@ Paket repository menyediakan satu folder `ceritadavid`. Folder ini dapat ditempa
 | --- | --- |
 | `README.md` | Dokumentasi proyek, keputusan desain, panduan, dan naskah lengkap |
 | `index.html` | Halaman utama beserta CSS dan JavaScript |
-| `assets/kenangan-bersama.jpg` | Foto lebar, digunakan pada pembuka, awal cerita, dan galeri |
-| `assets/kumpul-lagi.jpg` | Foto kotak, digunakan pada pembuka dan galeri |
+| `assets/kenangan-bersama.jpg` | Foto lebar, digunakan pada pembuka dan galeri |
+| `assets/kumpul-lagi.jpg` | Foto kotak di Hattori, digunakan pada pembuka, foto utama setelah judul cerita, dan galeri |
 
 Jika dimasukkan ke repository yang sudah ada, letakkan keempat path tersebut di dalam subfolder yang sama. Referensi foto menggunakan path relatif `assets/...`, sehingga folder foto perlu tetap berada di sebelah `index.html`.
 
@@ -59,10 +59,11 @@ Jika dimasukkan ke repository yang sudah ada, letakkan keempat path tersebut di 
 
 Saat halaman dibuka dengan JavaScript aktif, dialog pembuka tampil seperti sebuah kartu surat di atas latar gelap.
 
-- Header kartu berisi **Cerita David** dan angka edisi **01**.
+- Header kartu berisi **ceritadavid.blog** dan angka edisi **01**.
 - Judul pembuka: **Sebelum lanjut, baca sebentar?**
 - Deskripsi: **Ada sedikit cerita tentang kantor, orang-orangnya, dan perjalanan berikutnya. Boleh dibaca pelan-pelan.**
 - Dua foto berada **di dalam kartu**, berjajar **di atas tombol**.
+- Foto pembuka tidak memakai label **Kenangan 01** atau **Kenangan 02**.
 - Foto diputar sedikit melalui CSS, seperti foto yang diselipkan pada surat. File foto aslinya tidak diputar.
 - Pilihan tombol hanya **Buka ceritanya** dan **Tolak**.
 - Tidak ada tombol **Lewati pembuka**.
@@ -80,7 +81,7 @@ Tombol ini sengaja dibuat sebagai humor kecil pada pembuka.
 - Berpindah ketika disentuh di HP atau diaktifkan lewat keyboard.
 - Terus menghindar; tidak berhenti setelah dua kali.
 - Label tetap **Tolak**.
-- Posisi berpindah bergantian di bagian bawah area pilihan.
+- Posisi berulang dari posisi awal di kanan atas, ke bawah kiri, lalu bawah kanan, kemudian kembali ke posisi awal.
 - Perpindahan tetap dibatasi di dalam area `letterChoices`.
 - Tombol tidak menutup cerita atau menjalankan tindakan penolakan lain.
 
@@ -94,9 +95,9 @@ Pesan kecil di bawahnya berganti di antara:
 
 Urutan halaman:
 
-1. Header website **cerita david.** dan tombol **Tutup cerita**.
+1. Header website **ceritadavid.blog** dan tombol **Tutup cerita**.
 2. Judul, pengantar singkat, penulis, tanggal, dan perkiraan waktu baca.
-3. Foto lebar bersama rekan kerja.
+3. Satu foto utama bersama rekan kerja di Hattori, pada posisi foto awal setelah judul.
 4. Empat bagian cerita: pagi, kabar resign, koneksi, dan perjalanan berikutnya.
 5. Analogi visual karyawan, HR sebagai pendengar, dan manajemen.
 6. Tautan lagu Bernadya.
@@ -226,13 +227,14 @@ Pertahankan keputusan berikut saat mengedit:
 
 - Nama website **Cerita David** dan nama penulis **David**.
 - Rekan HR pada paragraf pengenalan disebut **Mbak Vit**.
-- Sudut pandang memakai **saya**.
+- Sudut pandang tetap personal dengan **aku** secukupnya. Gunakan bentuk seperti **pikiranku**, **sepertiku**, dan **kusimpan**, atau hilangkan kata ganti jika konteksnya sudah jelas; hindari pengulangan yang terasa kaku.
 - Gaya bahasa santai, mudah dipahami, sedikit humor, dan terasa personal.
 - Kejadian mengikuti cerita David. Jangan menambah percakapan, nama, lokasi, atau kejadian yang belum diberikan.
 - Analogi networking digunakan secukupnya: segmen jaringan, default gateway, paket data, dan rute.
 - Cerita yang dipercayakan kepada HR tidak semuanya diteruskan kepada manajemen. Animasi paket curhat berhenti di pendengar.
 - Kalimat pagi memakai **bangun tidur, berdoa sejenak, lalu merapikan kasur**. Frasa **mengucap syukur** sudah dihapus atas permintaan David.
 - Dua foto pembuka tetap di dalam kartu, sebelum tombol.
+- Header pembuka dan halaman cerita memakai **ceritadavid.blog**; foto pembuka tanpa label nomor kenangan.
 - Tombol tetap **Buka ceritanya** dan **Tolak**; tidak ada **Lewati pembuka**.
 - Teks **/ Untuk Mbak** tidak ditambahkan kembali ke header kartu.
 
@@ -244,8 +246,8 @@ Jika tanggal tulisan berubah, sinkronkan teks tanggal, atribut `datetime` pada e
 
 | File | Ukuran asli | Digunakan pada |
 | --- | --- | --- |
-| `assets/kenangan-bersama.jpg` | 2048 × 1152 px | Kartu pembuka, foto awal, galeri |
-| `assets/kumpul-lagi.jpg` | 640 × 640 px | Kartu pembuka dan galeri |
+| `assets/kenangan-bersama.jpg` | 2048 × 1152 px | Kartu pembuka dan galeri |
+| `assets/kumpul-lagi.jpg` | 640 × 640 px | Kartu pembuka, foto utama setelah judul cerita, dan galeri |
 
 Untuk mengganti foto dengan cepat, ganti file dengan nama yang sama. Perbarui caption, teks `alt`, `aria-label`, serta atribut ukuran gambar agar sesuai dengan foto baru.
 
@@ -318,17 +320,17 @@ Daftar pemeriksaan manual:
 
 Tentang rekan kerja yang mau mendengar, dan kabar resign yang ternyata bikin kepikiran.
 
-![Foto bersama rekan-rekan di luar ruangan.](assets/kenangan-bersama.jpg)
+![Rekan-rekan berfoto bersama di depan restoran Hattori.](assets/kumpul-lagi.jpg)
 
-*Foto bersama yang ingin saya simpan sebagai kenangan.*
+*Foto bersama yang ingin kusimpan sebagai kenangan.*
 
 #### 01 — Pagi yang terasa sedikit berbeda.
 
-Pagi itu, Kamis, 1 Oktober 2026, langit Jakarta sedikit mendung. Jalanan mulai riuh oleh suara kendaraan bermotor, sementara kamar saya masih cukup sunyi. Alarm berbunyi pukul 05.30 WIB, ditemani dengung AC yang masih menyala. Kasur terasa nyaman. Sebagai orang yang menyukai hawa dingin, rasanya selalu butuh sedikit usaha untuk beranjak. AC sudah mode *Powerful*, semangat bangunnya masih *loading*.
+Pagi itu, Kamis, 1 Oktober 2026, langit Jakarta sedikit mendung. Jalanan mulai riuh oleh suara kendaraan bermotor, sementara kamar masih cukup sunyi. Alarm berbunyi pukul 05.30 WIB, ditemani dengung AC yang masih menyala. Kasur terasa nyaman. Sebagai orang yang menyukai hawa dingin, rasanya selalu butuh sedikit usaha untuk beranjak. AC sudah mode *Powerful*, semangat bangunnya masih *loading*.
 
-Rutinitasnya seperti biasa: bangun tidur, berdoa sejenak, lalu merapikan kasur. Setelah mandi dan menyiapkan keperluan, saya bersiap berangkat kerja. Aktivitas yang sama setiap pagi, dan kadang memang terasa sedikit membosankan.
+Rutinitasnya seperti biasa: bangun tidur, berdoa sejenak, lalu merapikan kasur. Setelah mandi dan menyiapkan keperluan, aku bersiap berangkat kerja. Aktivitas yang sama setiap pagi, dan kadang memang terasa sedikit membosankan.
 
-Tetapi pagi itu ada sesuatu yang terasa berbeda. Pikiran saya berusaha menjalani hari seperti biasa, sementara perasaan saya masih mengganjal. Sulit dijelaskan dengan kata-kata. Entah kenapa, saya memikirkan kantor dan orang-orang yang setiap hari saya temui di sana.
+Tetapi pagi itu ada sesuatu yang terasa berbeda. Pikiranku berusaha menjalani hari seperti biasa, sementara masih ada yang mengganjal. Sulit dijelaskan dengan kata-kata. Entah kenapa, jadi kepikiran kantor dan orang-orang yang setiap hari kutemui di sana.
 
 Di tempat itu, kami tumbuh bersama dalam sebuah tim kecil. Pekerjaan menuntut kami belajar dan berkembang dengan cepat, tetapi di sela kesibukannya juga terbentuk rasa akrab dan kekeluargaan. Di tengah kerasnya hidup di perantauan, kedekatan seperti itu membuat hari-hari kerja terasa sedikit lebih ringan.
 
@@ -338,43 +340,43 @@ Belakangan, ada kabar di kantor bahwa salah satu rekan kerja akan mengundurkan d
 
 Resign memang hal yang wajar dalam dunia kerja. Tetap saja, rasanya berbeda ketika yang akan pergi adalah seseorang yang sudah dekat dengan kita. Seseorang yang selama ini bersedia mendengarkan keluh kesah, bahkan ketika cerita itu hanya perlu didengar. Yang membuat sedikit sedih justru membayangkan hal-hal biasa: percakapan di sela pekerjaan, atau rasa lega setelah selesai bercerita.
 
-Mbak Vit adalah seorang HR yang cukup akrab dengan rekan-rekan di kantor. Perannya terasa strategis karena ia bisa menjaga hubungan baik dengan karyawan maupun manajemen. Ia mau menerima cerita dan masukan, termasuk dari karyawan biasa seperti saya.
+Mbak Vit adalah seorang HR yang cukup akrab dengan rekan-rekan di kantor. Perannya terasa strategis karena ia bisa menjaga hubungan baik dengan karyawan maupun manajemen. Ia mau menerima cerita dan masukan, termasuk dari karyawan biasa sepertiku.
 
-Tentu tidak semua cerita harus diteruskan ke atasan. Ada hal-hal yang cukup berhenti sebagai percakapan, dan bagi saya, didengarkan saja kadang sudah membuat hati sedikit lega.
+Tentu tidak semua cerita harus diteruskan ke atasan. Ada hal-hal yang cukup berhenti sebagai percakapan. Kadang, didengarkan saja sudah membuat hati sedikit lega.
 
-Saya membayangkan, di sisi lain, ia mungkin juga menjadi tempat bercerita bagi atasan. Barangkali mereka pun punya keluh kesah yang tidak bisa dibagikan kepada semua karyawan. Menjaga kepercayaan di antara kedua sisi itu tentu membutuhkan kepekaan.
+Aku membayangkan, di sisi lain, ia mungkin juga menjadi tempat bercerita bagi atasan. Barangkali mereka pun punya keluh kesah yang tidak bisa dibagikan kepada semua karyawan. Menjaga kepercayaan di antara kedua sisi itu tentu membutuhkan kepekaan.
 
 #### 03 — Ada koneksi yang tidak terlihat di layar monitoring.
 
-Sebagai orang yang sehari-hari berkutat dengan *network*, saya terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: **rasa percaya antara orang-orangnya.** Kalau boleh memakai sedikit bahasa pekerjaan, perannya mirip *default gateway*, pintu penghubung yang membantu komunikasi antarjaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.
+Sebagai orang yang sehari-hari berkutat dengan *network*, aku terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: **rasa percaya antara orang-orangnya.** Kalau boleh memakai sedikit bahasa *network*, perannya mirip *default gateway*, pintu penghubung yang membantu komunikasi antar jaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.
 
-Kami datang membawa “paket data” masing-masing. Ada masukan, ada pertanyaan, kadang ada keluh kesah yang sudah terlalu panjang untuk diringkas dalam satu chat. Dia bersedia mendengarkan. Untungnya, kalau mau cerita, kami tidak perlu isi formulir atau bikin tiket dulu. Bisa langsung bicara sebagai sesama manusia.
+Kami datang membawa “paket data” masing-masing. Ada masukan, ada pertanyaan, kadang ada keluh kesah yang sudah terlalu panjang untuk diringkas dalam satu chat. Dia bersedia mendengarkan. Untungnya, kalau mau cerita, kami nggak perlu isi formulir atau bikin tiket dulu. Bisa langsung bicara sebagai sesama manusia.
 
 *Ada cerita yang cukup sampai pada seseorang yang mau mendengar.*
 
-Begitu tahu ia akan pergi, rasanya seperti menyadari bahwa jalur yang sudah akrab akan berubah. Kami tentu bisa menyesuaikan diri. Tapi mungkin nanti ada momen ketika saya ingin bercerita, lalu baru ingat: oh iya, dia sudah tidak di sini.
+Begitu tahu ia akan pergi, rasanya seperti menyadari bahwa jalur yang sudah akrab akan berubah. Kami tentu bisa menyesuaikan diri. Tapi mungkin nanti ada momen ketika ingin bercerita, lalu baru ingat: oh iya, dia sudah tidak di sini.
 
-> Kalau urusan jaringan, saya bisa mencari rute baru. Untuk kebiasaan bercerita kepada orang yang sama, sepertinya saya juga perlu memberi diri sendiri sedikit waktu.
+> Kalau urusan jaringan, aku bisa mencari rute baru. Untuk kebiasaan bercerita kepada orang yang sama, sepertinya perlu memberi diri sendiri sedikit waktu.
 
 #### 04 — Sedihnya boleh ada. Hangatnya juga.
 
-Meski terasa sedikit sedih, saya percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Saya pun punya tujuan sendiri, jadi saya bisa memahami keinginan untuk melanjutkan perjalanan.
+Meski terasa sedikit sedih, aku percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Aku pun punya tujuan sendiri, jadi bisa memahami keinginan untuk melanjutkan perjalanan.
 
-Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Saya belum tahu mana yang lebih tepat. Mungkin nanti, di suatu tempat, perjalanan kami bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.
+Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Aku belum tahu mana yang lebih tepat. Mungkin nanti, di suatu tempat, perjalanan kami bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.
 
-Saya jadi teringat lagu Bernadya, *Kita Buat Menyenangkan*. Buat saya, lagu itu cocok untuk hari ini. Selagi masih bisa bertemu di kantor, saya ingin menikmati waktu yang ada, tetap bekerja seperti biasa, dan menyisakan ruang untuk tertawa. Sedihnya boleh ada. Semoga kenangan yang dibawa pulang tetap hangat.
+Aku jadi teringat lagu Bernadya, *Kita Buat Menyenangkan*. Rasanya cocok buat suasana sekarang. Selagi masih ketemu di kantor, ya tetap kerja seperti biasa, ngobrol, dan ketawa kalau ada kesempatan.
 
 [Kita Buat Menyenangkan — Bernadya](https://www.youtube.com/watch?v=sdnDInjdWjw)
 
-Saya juga teringat kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.
+Ada juga kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.
 
-#### Galeri kenangan — Foto-foto yang mau saya simpan.
+#### Galeri kenangan — Foto-foto yang mau disimpan.
 
-Semoga nanti masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, saya simpan foto-foto ini dulu.
+Semoga nanti masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, kusimpan foto-foto ini dulu.
 
 ![Foto bersama rekan-rekan di luar ruangan.](assets/kenangan-bersama.jpg)
 
-*Foto bersama yang ingin saya simpan sebagai kenangan.*
+*Foto bersama yang ingin kusimpan sebagai kenangan.*
 
 ![Rekan-rekan berfoto bersama di depan sebuah restoran.](assets/kumpul-lagi.jpg)
 
@@ -382,9 +384,9 @@ Semoga nanti masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, saya 
 
 #### Untuk perjalanan berikutnya — Good luck, Mbak.
 
-Senang bisa bertemu dan berkenalan denganmu. Kita sama-sama anak daerah yang sedang mengadu nasib di Jakarta, sama-sama belajar bertahan dalam sibuknya ibu kota.
+Senang bisa kenal dan kerja bareng, Mbak. Kita sama-sama anak daerah yang merantau ke Jakarta.
 
-Terima kasih sudah mau mendengar. Semoga langkah berikutnya membawa banyak hal baik untukmu.
+Terima kasih sudah mau mendengar. Semoga langkah berikutnya membawa banyak hal baik buat Mbak Vit.
 
 *See you at the top.*
 
@@ -399,4 +401,4 @@ Tebet, Jakarta Selatan
 - Referensi lagu: Bernadya — Kita Buat Menyenangkan, melalui tautan video resmi.
 - Logo biru: menunggu file asli yang dimaksud David.
 
-Dokumentasi mengikuti versi halaman yang sudah memakai nama Mbak Vit, dua foto di dalam kartu pembuka, tombol Tolak yang terus menghindar, dan kalimat pagi tanpa frasa mengucap syukur.
+Dokumentasi mengikuti versi halaman yang memakai nama Mbak Vit, header ceritadavid.blog pada pembuka dan halaman cerita, dua foto pembuka tanpa label nomor kenangan, tombol Tolak yang berulang dari kanan atas ke bawah kiri, bawah kanan, lalu posisi awal, dan kalimat pagi tanpa frasa mengucap syukur.
