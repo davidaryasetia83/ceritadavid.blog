@@ -14,7 +14,7 @@ Jika memakai paket `ceritadavid-repository.zip`, ekstrak lalu salin folder `ceri
 
 Jika ingin membangun ulang dengan bantuan coding agent, gunakan instruksi berikut bersama README ini:
 
-> Bangun ulang proyek Cerita David berdasarkan README ini. Buat satu halaman statis dengan HTML, CSS, dan JavaScript biasa. Gunakan struktur folder pada Bagian 2 dan naskah lengkap pada Bagian 11. Pembuka harus memiliki dua foto di dalam kartu, di atas tombol Buka ceritanya dan Tolak. Tolak terus menghindar dan labelnya tetap Tolak. Jangan tambahkan tombol Lewati pembuka atau teks / Untuk Mbak pada header. Nama rekan HR adalah Mbak Vit. Pertahankan kalimat pagi yang sudah disunting. Buat layout responsif untuk HP dan desktop, galeri foto yang dapat diperbesar, serta player YouTube mengambang yang baru dimuat setelah tombol Putar lagu ditekan sesuai Bagian 9. Gunakan foto yang disertakan. Favicon memakai file asli dari davidaryasetia.site yang disimpan di assets sesuai Bagian 4. Terapkan animasi ringan dan reduced motion sesuai Bagian 3. Proyek tidak memakai database atau proses build. Seluruh perilaku dan konten lainnya mengikuti README ini.
+> Bangun ulang proyek Cerita David berdasarkan README ini. Buat satu halaman statis dengan HTML, CSS, dan JavaScript biasa. Gunakan struktur folder pada Bagian 2 dan naskah lengkap pada Bagian 11. Pembuka harus memiliki dua foto di dalam kartu, di atas tombol Buka ceritanya dan Tolak. Tolak terus menghindar dan labelnya tetap Tolak. Jangan tambahkan tombol Lewati pembuka atau teks / Untuk Mbak pada header. Nama rekan HR adalah Mbak Vit. Pertahankan kalimat pagi yang sudah disunting. Buat layout responsif untuk HP dan desktop, galeri foto yang dapat diperbesar, serta player Spotify mengambang yang baru dimuat setelah tombol Dengarkan cuplikan ditekan sesuai Bagian 9. Gunakan foto yang disertakan. Favicon memakai file asli dari davidaryasetia.site yang disimpan di assets sesuai Bagian 4. Terapkan animasi ringan dan reduced motion sesuai Bagian 3. Proyek tidak memakai database atau proses build. Seluruh perilaku dan konten lainnya mengikuti README ini.
 
 Jika implementasi HTML dibuat ulang, periksa ulang hasilnya sesuai Bagian 10. Catatan pemeriksaan implementasi sebelumnya tidak otomatis berlaku pada kode baru.
 
@@ -105,7 +105,7 @@ Urutan halaman:
 3. Satu foto utama bersama rekan kerja di Hattori, pada posisi foto awal setelah judul.
 4. Empat bagian cerita: pagi, kabar resign, koneksi, dan perjalanan berikutnya.
 5. Analogi visual karyawan, HR sebagai pendengar, dan manajemen.
-6. Lagu Bernadya dengan tombol **Putar lagu** untuk player mengambang dan tautan YouTube sebagai cadangan.
+6. Lagu Bernadya dengan tombol **Dengarkan cuplikan** untuk player Spotify mengambang serta tautan Spotify dan YouTube.
 7. Galeri kenangan.
 8. Ucapan penutup dan tanda tangan David.
 
@@ -123,7 +123,7 @@ Dialog foto dapat ditutup melalui tombol **Tutup foto**, klik pada latar dialog,
 - Dialog pembuka memakai elemen `dialog` bawaan browser.
 - Esc pada dialog pembuka tetap dapat menampilkan cerita sebagai akses keyboard; ini bukan tombol tambahan pada tampilan.
 - Preferensi `prefers-reduced-motion` menghilangkan transisi, animasi bertahap, kilau kartu, dan emoji bergerak. Tombol Tolak tetap berpindah secara langsung.
-- Cerita dan tautan YouTube tetap tersedia jika JavaScript dinonaktifkan; pembuka, pembesaran foto, dan player mengambang membutuhkan JavaScript.
+- Cerita serta tautan Spotify dan YouTube tetap tersedia jika JavaScript dinonaktifkan; pembuka, pembesaran foto, dan player mengambang membutuhkan JavaScript.
 - Animasi bagian cerita muncul sekali saat bagian tersebut memasuki area pandang.
 - Animasi paket pada diagram berulang bergantian dari karyawan ke pendengar dan dari manajemen ke pendengar. Paket karyawan memakai warna aksen cokelat dan paket manajemen memakai biru. Keduanya berhenti sejenak di pendengar, menghilang, lalu mengulang dari awal tanpa diteruskan ke sisi lainnya. Satu siklus kedua arah berlangsung 4,4 detik. Gerakan paket dinonaktifkan saat reduced motion aktif.
 - Garis pada header mengikuti posisi scroll pembaca, tanpa menyimpan data pembaca.
@@ -163,7 +163,7 @@ File asli disalin tanpa menggambar ulang atau mengubah warnanya, lalu disimpan l
 
 ### Membuka langsung
 
-Ekstrak folder `ceritadavid`, kemudian buka `index.html` di browser. Foto, CSS, dan JavaScript berada di dalam paket. Internet diperlukan ketika pembaca memuat player atau membuka tautan YouTube. Untuk memakai player tertanam, gunakan server lokal seperti di bawah atau hosting HTTP/HTTPS; pembukaan langsung lewat `file://` dapat ditolak YouTube karena tidak mengirim identitas situs melalui referrer. Tautan **Buka di YouTube** tetap tersedia sebagai cadangan.
+Ekstrak folder `ceritadavid`, kemudian buka `index.html` di browser. Foto, CSS, dan JavaScript berada di dalam paket. Internet diperlukan ketika pembaca memuat player Spotify atau membuka tautan Spotify dan YouTube. Untuk memeriksa player tertanam, gunakan server lokal seperti di bawah atau hosting HTTP/HTTPS. Tautan **Buka di Spotify** dan **Buka di YouTube** tetap tersedia sebagai cadangan.
 
 ### Memakai server lokal
 
@@ -294,20 +294,21 @@ Lagu yang dipilih adalah **Kita Buat Menyenangkan — Bernadya**.
 
 Tautan yang dipakai:
 
-[Bernadya — Kita Buat Menyenangkan, video resmi](https://www.youtube.com/watch?v=sdnDInjdWjw)
+- [Bernadya — Kita Buat Menyenangkan di Spotify](https://open.spotify.com/track/4J9DouSADdyakPD9h6oD6N)
+- [Bernadya — Kita Buat Menyenangkan, video resmi YouTube](https://www.youtube.com/watch?v=sdnDInjdWjw)
 
-Tombol **Putar lagu** memuat video resmi tersebut di dalam player mengambang di sudut kanan bawah. Pembaca tetap dapat scroll dan membaca cerita. Kartu menyesuaikan lebar layar, memakai kontrol play/pause dan volume bawaan YouTube, serta menyediakan tombol **Tutup** dan tautan **Buka di YouTube**.
+Tombol **Dengarkan cuplikan** memuat player Spotify resmi di sudut kanan bawah. Pembaca menekan play di player untuk mendengarkan sambil membaca. Tanpa login, Spotify dapat membatasi pemutaran menjadi cuplikan singkat, yang bisa lebih pendek dari 30 detik; pemutaran penuh mengikuti akun, browser, dan ketersediaan layanan Spotify. Situs tidak menjanjikan pemutaran lagu penuh melalui embed. Tautan Spotify dan YouTube membuka lagu pada layanan masing-masing.
 
-- Tidak ada iframe, thumbnail jarak jauh, preconnect, atau skrip YouTube yang dimuat saat halaman pertama dibuka. Iframe baru dibuat setelah tombol **Putar lagu** ditekan.
-- Setelah tombol ditekan, player meminta pemutaran (`autoplay=1`). Tidak ada pemutaran otomatis saat halaman dibuka. Jika browser menahan pemutaran, gunakan tombol play pada video.
-- Integrasi memakai satu iframe `youtube-nocookie.com` dan JavaScript lokal, tanpa library tambahan atau IFrame Player API. Kontrol keyboard dan fullscreen bawaan YouTube tetap tersedia.
-- Menekan **Lihat player** saat kartu sudah terbuka hanya memindahkan fokus ke kartu; tidak menambah iframe atau mengulang video.
-- **Tutup** menghapus iframe, menghentikan lagu, dan mengembalikan fokus ke tombol lagu tanpa memaksa scroll. Player juga dapat ditutup dengan Esc saat fokus berada pada halaman induk; tombol keyboard di dalam iframe ditangani oleh YouTube.
-- Saat pembuka dibuka kembali atau foto galeri diperbesar, player ditutup dan pemutaran berhenti. Membuka player lagi memuat ulang video dari awal.
-- Iframe memiliki tinggi minimum 200 px. Ruang tambahan di bawah halaman saat kartu terbuka membantu agar bagian akhir cerita tetap dapat digulir melewati kartu. Jika player ditutup saat pembaca berada di ruang tambahan tersebut, ruang dipertahankan agar posisi baca tidak meloncat; ruang dilepas setelah pembaca menggulir kembali ke area halaman semula.
-- Tautan **Buka di YouTube** tetap membuka video di tab baru sebagai cadangan, termasuk jika JavaScript dimatikan. Pemutaran membutuhkan internet dan bergantung pada ketersediaan video serta izin embed YouTube. Tidak ada file audio atau lirik lagu yang disertakan pada proyek.
+- Tidak ada iframe, thumbnail jarak jauh, preconnect, atau skrip Spotify yang dimuat saat halaman pertama dibuka. Iframe baru dibuat setelah tombol **Dengarkan cuplikan** ditekan.
+- Tidak ada permintaan autoplay. Setelah kartu muncul, gunakan tombol play bawaan Spotify.
+- Integrasi memakai satu iframe `https://open.spotify.com/embed/track/4J9DouSADdyakPD9h6oD6N?theme=0` dengan izin `encrypted-media`, JavaScript lokal, dan tanpa library tambahan.
+- Menekan **Lihat player** saat kartu sudah terbuka hanya memindahkan fokus ke kartu; tidak menambah iframe atau mengulang lagu.
+- **Tutup** menghapus iframe, menghentikan pemutaran, dan mengembalikan fokus ke tombol lagu tanpa memaksa scroll. Player juga dapat ditutup dengan Esc saat fokus berada pada halaman induk; tombol keyboard di dalam iframe ditangani oleh Spotify.
+- Saat pembuka dibuka kembali atau foto galeri diperbesar, player ditutup dan pemutaran berhenti. Membuka player lagi memuat ulang player dari awal.
+- Iframe memakai tampilan ringkas dengan tinggi 152 px. Kartu menyesuaikan lebar dan tinggi viewport, termasuk layar pendek. Ruang tambahan di bawah halaman saat kartu terbuka membantu agar bagian akhir cerita tetap dapat digulir melewati kartu. Jika player ditutup saat pembaca berada di ruang tambahan tersebut, ruang dipertahankan agar posisi baca tidak meloncat; ruang dilepas setelah pembaca menggulir kembali ke area halaman semula.
+- Tautan Spotify dan YouTube tetap tersedia jika JavaScript dimatikan. Pemutaran membutuhkan internet. Tidak ada file audio atau lirik lagu yang disertakan pada proyek.
 
-Acuan: [parameter player YouTube](https://developers.google.com/youtube/player_parameters) dan [memuat embed setelah interaksi](https://web.dev/articles/embed-best-practices).
+Acuan: [membuat embed Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed), [batasan pemutaran embed](https://developer.spotify.com/documentation/embeds/tutorials/troubleshooting), [penjelasan cuplikan saat belum login](https://newsroom.spotify.com/2018-09-04/how-to-embed-spotifys-play-button/), dan [memuat embed setelah interaksi](https://web.dev/articles/embed-best-practices).
 
 ## 10. Pemeriksaan sebelum dibagikan
 
@@ -319,7 +320,7 @@ Pemeriksaan yang sudah dilakukan pada versi HTML yang disertakan dalam paket rep
 - Tombol Tolak diperiksa dengan simulasi mouse dan sentuhan hingga 48 perpindahan.
 - Akses keyboard, perilaku reduced motion, serta buka-tutup galeri diperiksa melalui simulasi DOM.
 
-Pemeriksaan awal di atas memakai simulasi DOM. Pada revisi player mengambang, pengujian tambahan dilakukan di Chromium nyata pada viewport desktop, HP 320 px, dan layar pendek 320 × 256 px:
+Pemeriksaan awal di atas memakai simulasi DOM. Pada revisi awal player YouTube mengambang, pengujian tambahan dilakukan di Chromium nyata pada viewport desktop, HP 320 px, dan layar pendek 320 × 256 px:
 
 - Tidak ada request YouTube sebelum tombol lagu ditekan; setelah ditekan hanya satu iframe dimuat, termasuk saat tombol ditekan ulang.
 - Ukuran kartu tetap di dalam viewport dan tidak menambah overflow horizontal; iframe tetap memiliki tinggi minimum 200 px.
@@ -327,9 +328,13 @@ Pemeriksaan awal di atas memakai simulasi DOM. Pada revisi player mengambang, pe
 - Membuka pembuka dan galeri menutup player; tidak ada error JavaScript. Uji klik langsung pada desktop dan HP juga memastikan buka-tutup pembuka mempertahankan posisi baca di akhir halaman.
 - Saat JavaScript dimatikan, cerita dan tautan YouTube tetap tersedia.
 
-Pemeriksaan alur player memakai respons iframe tiruan agar hasilnya tidak bergantung pada jaringan. Pemutaran video YouTube asli tetap perlu diperiksa pada hosting/perangkat pembaca; pengujian alur dan layout tidak membuktikan bahwa YouTube akan mengizinkan video diputar di semua lokasi.
+Pemeriksaan alur player YouTube memakai respons iframe tiruan agar hasilnya tidak bergantung pada jaringan. Pengujian alur dan layout tersebut tidak membuktikan bahwa YouTube akan mengizinkan video diputar di semua lokasi.
 
-Pada uji pemutaran nyata dari server lokal, video pilihan `sdnDInjdWjw` menampilkan **This video is unavailable** di embed `youtube-nocookie.com` maupun `youtube.com`, meskipun iframe berhasil dimuat dan referrer situs terkirim. Unggahan audio resmi lain dari lagu yang sama, `mGVLxyJwDYk`, juga tidak dapat diputar pada lingkungan pengujian ini. Video contoh dokumentasi YouTube berhasil diputar melalui player yang sama. Karena itu, pemutaran lagu Bernadya belum terverifikasi; penyebab spesifik ketidaktersediaannya belum diketahui. Implementasi tetap memakai video pilihan semula dan menyediakan tautan **Buka di YouTube** sebagai cadangan.
+Pada uji pemutaran nyata dari server lokal, video pilihan `sdnDInjdWjw` menampilkan **This video is unavailable** di embed `youtube-nocookie.com` maupun `youtube.com`, meskipun iframe berhasil dimuat dan referrer situs terkirim. Unggahan audio resmi lain dari lagu yang sama, `mGVLxyJwDYk`, juga tidak dapat diputar pada lingkungan pengujian ini. Video contoh dokumentasi YouTube berhasil diputar melalui player yang sama. Pembaca kemudian juga melaporkan video tidak tersedia. Karena itu, player tertanam diganti dengan Spotify; video pilihan semula tetap tersedia melalui tautan **Buka di YouTube**. Penyebab spesifik ketidaktersediaan video belum diketahui.
+
+Player Spotify diperiksa di Chromium pada desktop 1280 × 900, HP 320 × 720, dan layar pendek 320 × 256 px. Pemeriksaan alur memakai iframe tiruan: tidak ada request Spotify saat halaman dibuka, aktivasi ulang tetap memakai satu iframe, dan Tutup, Esc, pembuka, serta galeri menghapus iframe. Kartu tetap di dalam viewport; penutupan di akhir halaman mempertahankan scroll dan memulihkan fokus. Tanpa JavaScript, kedua tautan layanan tetap tersedia. Tidak ada error JavaScript pada halaman induk.
+
+Pemutaran Spotify juga diperiksa memakai layanan asli dari server lokal. Dalam sesi tanpa login, cuplikan berdurasi sekitar 17,8 detik berhasil dimulai: waktu audio maju, audio tidak dalam keadaan pause, media siap diputar, dan tidak ada error media. Tombol pause berfungsi dan penutupan kartu menghapus iframe. Ini memverifikasi cuplikan pada lingkungan pengujian, bukan pemutaran lagu penuh atau ketersediaan di semua perangkat.
 
 Efek emoji pembuka juga diperiksa di Chromium pada desktop 1280 × 900 dan HP 320 × 720 px. Tolak menampilkan tiga emoji, Buka ceritanya menampilkan lima emoji, dan efek dibersihkan setelah selesai maupun saat kartu dibuka ulang. Aktivasi berulang tidak menumpuk elemen; fokus, posisi scroll, dan ukuran kartu tetap sesuai. Pada reduced motion, emoji tidak ditampilkan dan cerita langsung terbuka. Tidak ada error JavaScript atau request eksternal tambahan selama pemeriksaan ini.
 
@@ -341,9 +346,9 @@ Daftar pemeriksaan manual:
 - [ ] Dekati atau sentuh Tolak beberapa kali; pastikan terus berpindah dalam area pilihan.
 - [ ] Buka cerita, scroll, lalu gunakan Tutup cerita.
 - [ ] Perbesar foto galeri, kemudian tutup dan lanjutkan membaca.
-- [ ] Tekan **Putar lagu**, periksa video, play/pause, volume, dan posisi kartu saat scroll pada desktop serta HP.
+- [ ] Tekan **Dengarkan cuplikan**, lalu play di player Spotify; periksa pemutaran cuplikan dan posisi kartu saat scroll pada desktop serta HP.
 - [ ] Tutup player dan pastikan lagu berhenti; buka lagi, lalu periksa **Tutup cerita** dan galeri juga menghentikan player.
-- [ ] Jika player tidak dapat memutar video, periksa tautan **Buka di YouTube**.
+- [ ] Periksa tautan **Buka di Spotify** dan **Buka di YouTube**, termasuk jika player tidak dapat memutar cuplikan.
 - [ ] Periksa caption, ejaan Mbak Vit, tanggal, dan tanda tangan.
 - [ ] Pastikan seluruh wajah pada foto tetap terlihat.
 - [ ] Periksa hasil dengan pengaturan reduced motion jika tersedia.
@@ -405,6 +410,8 @@ Aku jadi teringat lagu Bernadya, *Kita Buat Menyenangkan*. Rasanya cocok buat su
 
 [Kita Buat Menyenangkan — Bernadya](https://www.youtube.com/watch?v=sdnDInjdWjw)
 
+[Dengarkan di Spotify](https://open.spotify.com/track/4J9DouSADdyakPD9h6oD6N)
+
 Ada juga kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.
 
 #### Galeri kenangan — Foto-foto yang mau disimpan.
@@ -436,7 +443,7 @@ Tebet, Jakarta Selatan
 - Footer: **cerita david. · Vol. 01** di kiri dan **Ditulis oleh David.** di kanan.
 - Naskah: David.
 - Foto: foto yang disediakan David.
-- Referensi lagu: Bernadya — Kita Buat Menyenangkan, melalui tautan video resmi.
+- Referensi lagu: Bernadya — Kita Buat Menyenangkan, melalui player Spotify resmi serta tautan Spotify dan video YouTube resmi.
 - Favicon: file asli dari [davidaryasetia.site](https://davidaryasetia.site/), disimpan lokal di folder `assets`.
 
 Dokumentasi mengikuti versi halaman yang memakai nama Mbak Vit, header ceritadavid.blog pada pembuka dan halaman cerita, dua foto pembuka tanpa label nomor kenangan, tombol Tolak yang berulang dari kanan atas ke bawah kiri, bawah kanan, lalu posisi awal, dan kalimat pagi tanpa frasa mengucap syukur.

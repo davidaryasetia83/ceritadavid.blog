@@ -113,9 +113,10 @@
     .song-player-title { min-width: 0; margin: 0; font-size: .875rem; line-height: 1.5; font-weight: 600; }
     .song-player-close { flex-shrink: 0; min-height: 44px; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); font-size: .8125rem; }
     .song-player-close:hover { background: #ecece6; }
-    .song-video { width: 100%; aspect-ratio: 16 / 9; min-height: 200px; background: #172735; }
-    .song-video iframe { display: block; width: 100%; height: 100%; min-height: 200px; border: 0; }
-    .song-player-footer { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem .75rem; font-size: .75rem; color: var(--muted); }
+    .song-embed { width: 100%; height: 152px; background: #1f1f1f; }
+    .song-embed iframe { display: block; width: 100%; height: 152px; border: 0; }
+    .song-player-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem .75rem; padding: .7rem .75rem; font-size: .75rem; color: var(--muted); }
+    .song-player-links { display: flex; flex-wrap: wrap; gap: .75rem; }
     body.song-space { padding-bottom: 21rem; }
     .memories { width: min(960px, calc(100% - 3rem)); margin: 1rem auto 5rem; }
     .memory-gallery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
@@ -314,7 +315,7 @@
             <h2>Yang membuat kantor terasa dekat.</h2>
             <p>Belakangan, ada kabar di kantor bahwa salah satu rekan kerja akan mengundurkan diri. Ia sudah mengajukan pemberitahuan satu bulan sebelum meninggalkan pekerjaannya, atau <em>one month notice</em>. Bagi sebagian dari kami, kabar itu cukup mengejutkan.</p>
             <p>Resign memang hal yang wajar dalam dunia kerja. Tetap saja, rasanya berbeda ketika yang akan pergi adalah seseorang yang sudah dekat dengan kita. Seseorang yang selama ini bersedia mendengarkan keluh kesah, bahkan ketika cerita itu hanya perlu didengar. Yang membuat sedikit sedih justru membayangkan hal-hal biasa: percakapan di sela pekerjaan, atau rasa lega setelah selesai bercerita.</p>
-            <p>Mbak Vit adalah seorang HR yang cukup akrab dengan rekan-rekan di kantor. Perannya terasa strategis karena ia bisa menjaga hubungan baik dengan karyawan maupun manajemen. Ia mau menerima cerita dan masukan, termasuk dari karyawan biasa sepertiku.</p>
+            <p>Mbak Vita adalah seorang HR yang cukup akrab dengan rekan-rekan di kantor. Perannya terasa strategis karena ia bisa menjaga hubungan baik dengan karyawan maupun manajemen. Ia mau menerima cerita dan masukan, termasuk dari karyawan biasa sepertiku.</p>
             <p>Tentu tidak semua cerita harus diteruskan ke atasan. Ada hal-hal yang cukup berhenti sebagai percakapan. Kadang, didengarkan saja sudah membuat hati sedikit lega.</p>
             <p>Aku membayangkan, di sisi lain, ia mungkin juga menjadi tempat bercerita bagi atasan. Barangkali mereka pun punya keluh kesah yang tidak bisa dibagikan kepada semua karyawan. Menjaga kepercayaan di antara kedua sisi itu tentu membutuhkan kepekaan.</p>
           </div>
@@ -324,7 +325,7 @@
           <div class="chapter-label"><b>03</b> Koneksi</div>
           <div class="prose">
             <h2>Ada koneksi yang tidak terlihat di layar monitoring.</h2>
-            <p>Sebagai orang yang sehari-hari berkutat dengan <em>network</em>, aku terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: <strong>rasa percaya antara orang-orangnya.</strong> Kalau boleh memakai sedikit bahasa <em>network</em>, perannya mirip <em>default gateway</em>, pintu penghubung yang membantu komunikasi antar jaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.</p>
+            <p>Sebagai orang yang sehari-hari berkutat dengan <em>network</em>, aku terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: <strong>rasa percaya antara orang-orangnya.</strong> Kalau boleh memakai sedikit bahasa <em>network</em>, perannya bisa diibaratkan seperti <em>default gateway</em>, pintu penghubung yang membantu komunikasi antar jaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.</p>
             <p>Kami datang membawa “paket data” masing-masing. Ada masukan, ada pertanyaan, kadang ada keluh kesah yang sudah terlalu panjang untuk diringkas dalam satu chat. Dia bersedia mendengarkan. Untungnya, kalau mau cerita, kami nggak perlu isi formulir atau bikin tiket dulu. Bisa langsung bicara sebagai sesama manusia.</p>
             <figure class="network-note reveal" aria-label="Analogi HR sebagai pendengar bagi karyawan dan manajemen. Paket cerita bergerak bergantian dari karyawan dan manajemen, lalu berhenti di pendengar tanpa diteruskan ke sisi lainnya.">
               <div class="network-heading">Sebuah analogi kecil</div>
@@ -347,27 +348,28 @@
           <div class="prose">
             <h2>Sedihnya boleh ada. Hangatnya juga.</h2>
             <p>Meski terasa sedikit sedih, aku percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Aku pun punya tujuan sendiri, jadi bisa memahami keinginan untuk melanjutkan perjalanan.</p>
-            <p>Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Aku belum tahu mana yang lebih tepat. Mungkin nanti, di suatu tempat, perjalanan kami bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.</p>
-            <p>Aku jadi teringat lagu Bernadya, <em>Kita Buat Menyenangkan</em>. Rasanya cocok buat suasana sekarang. Selagi masih ketemu di kantor, ya tetap kerja seperti biasa, ngobrol, dan ketawa kalau ada kesempatan.</p>
+            <p>Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Aku belum tahu mana yang lebih tepat. Mungkin nanti, di lain tempat, kita bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.</p>
+            <p>Aku jadi teringat lagu Bernadya, <em>Kita Buat Menyenangkan</em>. Rasanya cocok buat suasana sekarang. Selagi masih bisa ketemu di kantor, ya tetap bekerja seperti biasa, ngobrol, dan ketawa bersama kalau ada kesempatan.</p>
             <aside class="song-note" aria-label="Lagu yang menemani cerita">
               <span class="music-mark" aria-hidden="true">♪</span>
               <div class="song-copy">
                 <span>Kalau ingin ditemani lagu</span>
                 <strong class="song-title">Kita Buat Menyenangkan — Bernadya</strong>
                 <div class="song-actions">
-                  <button class="song-play" id="playSong" type="button" aria-controls="songPlayer" aria-expanded="false" hidden><span aria-hidden="true">▶</span> Putar lagu</button>
+                  <button class="song-play" id="playSong" type="button" aria-controls="songPlayer" aria-expanded="false" hidden><span aria-hidden="true">▶</span> Dengarkan cuplikan</button>
+                  <a href="https://open.spotify.com/track/4J9DouSADdyakPD9h6oD6N" target="_blank" rel="noopener noreferrer">Buka di Spotify</a>
                   <a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Buka di YouTube</a>
                 </div>
-                <small>Video resmi · bisa diputar sambil membaca</small>
+                <small>Cuplikan lewat Spotify · tekan play di player untuk mendengarkan</small>
               </div>
             </aside>
-            <p>Ada juga kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.</p>
+            <p>Ada juga kata yang sering disampaikan Mr. Jayden dan atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak Vita berikutnya.</p>
           </div>
         </section>
       </div>
 
       <section class="memories reveal" aria-labelledby="memoryTitle">
-        <div class="memory-copy"><p class="eyebrow">Galeri kenangan</p><h2 id="memoryTitle">Foto-foto yang mau disimpan.</h2><p>Semoga nanti masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, kusimpan foto-foto ini dulu.</p></div>
+        <div class="memory-copy"><p class="eyebrow">Galeri kenangan</p><h2 id="memoryTitle">Foto-foto yang mau kusimpan.</h2><p>Semoga suatu saat kita semua masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, kusimpan foto-foto ini dulu.</p></div>
         <div class="memory-gallery">
           <figure class="memory-photo">
             <button class="photo-button" type="button" aria-label="Perbesar foto bersama di luar ruangan"><img class="wide-photo" src="assets/kenangan-bersama.jpg" alt="Foto bersama rekan-rekan di luar ruangan." width="2048" height="1152" loading="lazy"></button>
@@ -375,7 +377,7 @@
           </figure>
           <figure class="memory-photo">
             <button class="photo-button" type="button" aria-label="Perbesar foto bersama di depan restoran"><img src="assets/kumpul-lagi.jpg" alt="Rekan-rekan berfoto bersama di depan sebuah restoran." width="640" height="640" loading="lazy"></button>
-            <figcaption>Semoga nanti masih bisa kumpul dan foto begini lagi.</figcaption>
+            <figcaption>Semoga kedepan kita masih bisa kumpul dan foto begini lagi.</figcaption>
           </figure>
         </div>
       </section>
@@ -383,9 +385,9 @@
       <section class="closing" aria-labelledby="closingTitle">
         <div class="closing-inner reveal">
           <span class="eyebrow">Untuk perjalanan berikutnya</span>
-          <h2 id="closingTitle">Good luck, Mbak.</h2>
+          <h2 id="closingTitle">Good luck, Mbak Vita</h2>
           <p>Senang bisa kenal dan kerja bareng, Mbak. Kita sama-sama anak daerah yang merantau ke Jakarta.</p>
-          <p>Terima kasih sudah mau mendengar. Semoga langkah berikutnya membawa banyak hal baik buat Mbak Vit.</p>
+          <p>Terima kasih sudah mau mendengar. Semoga langkah berikutnya membawa banyak hal baik buat Mbak Vita.</p>
           <p class="goodbye">See you at the top.</p>
           <div class="signature"><span class="signature-name">David</span><span class="signature-place">Tebet, Jakarta Selatan<br>1 Oktober 2026</span></div>
         </div>
@@ -399,10 +401,13 @@
       <h2 class="song-player-title" id="songPlayerTitle">Kita Buat Menyenangkan</h2>
       <button class="song-player-close" id="closeSong" type="button" aria-label="Tutup player dan hentikan lagu">Tutup <span aria-hidden="true">×</span></button>
     </div>
-    <div class="song-video" id="songVideo"></div>
+    <div class="song-embed" id="songEmbed"></div>
     <div class="song-player-footer">
-      <span>Bernadya</span>
-      <a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Buka di YouTube</a>
+      <span>Bernadya · cuplikan Spotify</span>
+      <div class="song-player-links">
+        <a href="https://open.spotify.com/track/4J9DouSADdyakPD9h6oD6N" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
     </div>
   </section>
 
@@ -583,7 +588,7 @@
 
       const playSong = document.getElementById('playSong');
       const songPlayer = document.getElementById('songPlayer');
-      const songVideo = document.getElementById('songVideo');
+      const songEmbed = document.getElementById('songEmbed');
       const closeSong = document.getElementById('closeSong');
 
       function releaseSongSpace() {
@@ -597,28 +602,28 @@
       function closeSongPlayer(restoreFocus = true) {
         if (songPlayer.hidden) return;
         // Removing the iframe stops playback and releases its resources.
-        songVideo.replaceChildren();
+        songEmbed.replaceChildren();
         songPlayer.hidden = true;
         updateReadingLine();
         playSong.setAttribute('aria-expanded', 'false');
-        playSong.textContent = '▶ Putar lagu';
+        playSong.textContent = '▶ Dengarkan cuplikan';
         if (restoreFocus) playSong.focus({ preventScroll: true });
       }
 
       playSong.addEventListener('click', () => {
         if (cover.open || document.getElementById('photoViewer').open) return;
         if (songPlayer.hidden) {
-          // No iframe, remote thumbnail, or YouTube script is loaded before this click.
+          // Load the official Spotify player only after the reader asks for it.
           const frame = document.createElement('iframe');
-          frame.title = 'Kita Buat Menyenangkan — Bernadya, video resmi YouTube';
-          frame.width = '360';
-          frame.height = '203';
-          frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+          frame.title = 'Kita Buat Menyenangkan — Bernadya, player Spotify';
+          frame.width = '100%';
+          frame.height = '152';
+          frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
           frame.allowFullscreen = true;
           frame.referrerPolicy = 'strict-origin-when-cross-origin';
-          frame.src = 'https://www.youtube-nocookie.com/embed/sdnDInjdWjw?autoplay=1&playsinline=1&controls=1&rel=0';
+          frame.src = 'https://open.spotify.com/embed/track/4J9DouSADdyakPD9h6oD6N?theme=0';
           songPlayer.hidden = false;
-          songVideo.replaceChildren(frame);
+          songEmbed.replaceChildren(frame);
           document.body.classList.add('song-space');
           updateReadingLine();
           playSong.setAttribute('aria-expanded', 'true');
