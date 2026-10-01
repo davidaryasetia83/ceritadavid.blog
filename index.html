@@ -162,6 +162,10 @@
     .cover-photo figcaption { padding-top: .6rem; text-align: center; font-family: var(--serif); font-size: .8125rem; color: #5f676b; }
     .cover-photo-right { transform: rotate(2.5deg); }
     .letter-sheet { position: relative; width: min(550px, 100%); margin-block: auto; padding: 2.15rem 2.65rem 1.6rem; background: var(--paper); border-top: 5px solid #c5924d; border-radius: 3px; box-shadow: 0 25px 90px #0000003d; transform-origin: top center; }
+    .letter-sheet::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; background: linear-gradient(115deg, transparent 25%, #ffffff70 50%, transparent 75%); }
+    .letter-effects { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; z-index: 2; }
+    .letter-effect { position: absolute; font-size: 1.2rem; line-height: 1; opacity: 0; user-select: none; animation: emoji-pop .7s ease-out forwards; }
+    .letter-effect-open { font-size: 1.35rem; animation-duration: .5s; }
     .letter-meta { display: flex; justify-content: space-between; gap: 1rem; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
     .letter-meta .eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: none; }
     .letter-volume { font-family: var(--serif); font-size: 1.4rem; color: var(--gold); }
@@ -178,10 +182,17 @@
     .cover-dialog.leaving { animation: backdrop-away .65s ease forwards; pointer-events: none; }
     .cover-dialog.leaving::backdrop { animation: backdrop-away .65s ease forwards; }
     .cover-dialog.leaving .letter-sheet { animation: letter-open .65s cubic-bezier(.3,.7,.2,1) forwards; }
+    .cover-dialog.leaving .letter-sheet::after { animation: letter-shine .65s ease-out forwards; }
     .cover-dialog.returning .letter-sheet { animation: letter-return .45s ease both; }
     @keyframes letter-open { 0% { opacity: 1; transform: rotateX(0) translateY(0); } 100% { opacity: 0; transform: rotateX(25deg) translateY(-65px) scale(.96); } }
     @keyframes backdrop-away { 0%, 30% { background-color: #172735; } 100% { background-color: #17273500; } }
     @keyframes letter-return { from { opacity: 0; transform: translateY(18px) rotateX(-8deg); } to { opacity: 1; transform: none; } }
+    @keyframes emoji-pop {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(.55); }
+      18% { opacity: 1; }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(1.15) rotate(var(--twist)); }
+    }
+    @keyframes letter-shine { 0% { opacity: 0; } 35% { opacity: .8; } 100% { opacity: 0; } }
     @media (min-width: 1400px) { .hero { padding-top: 5rem; } }
     @media (max-width: 800px) {
       .hero-title-row { grid-template-columns: 1fr; gap: 1.8rem; }
@@ -251,6 +262,7 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
       .motion-ready .reveal { opacity: 1; transform: none; }
       .packet { display: none; }
+      .letter-effects, .letter-sheet::after { display: none; }
     }
   </style>
 </head>
@@ -403,6 +415,7 @@
 
   <dialog class="cover-dialog" id="letterCover" aria-labelledby="coverTitle" aria-describedby="coverDescription">
     <div class="letter-sheet">
+      <div class="letter-effects" id="letterEffects" aria-hidden="true"></div>
       <div class="letter-meta"><span class="eyebrow">ceritadavid.blog</span><span class="letter-volume" aria-hidden="true">01</span></div>
       <h2 class="letter-title" id="coverTitle">Sebelum lanjut,<br><em>baca sebentar?</em></h2>
       <p class="letter-description" id="coverDescription">Ada sedikit cerita tentang kantor, orang-orangnya, dan perjalanan berikutnya. Boleh dibaca pelan-pelan.</p>
@@ -431,12 +444,51 @@
       const closeButton = document.getElementById('closeStory');
       const choiceZone = document.getElementById('letterChoices');
       const status = document.getElementById('coverStatus');
+      const effectLayer = document.getElementById('letterEffects');
+      const letterSheet = cover.querySelector('.letter-sheet');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       let dodgeCount = 0;
       let lastDodge = -Infinity;
       let opening = false;
+      let effectTimer = null;
+
+      function clearCoverEffects() {
+        window.clearTimeout(effectTimer);
+        effectTimer = null;
+        effectLayer.replaceChildren();
+      }
+
+      function popCoverEffects(button, kind) {
+        clearCoverEffects();
+        if (reducedMotion.matches) return;
+        const buttonRect = button.getBoundingClientRect();
+        const sheetRect = letterSheet.getBoundingClientRect();
+        const x = buttonRect.left + buttonRect.width / 2 - sheetRect.left;
+        const y = buttonRect.top + buttonRect.height / 2 - sheetRect.top;
+        const faces = ['😅', '😂', '🏃', '💨'];
+        const icons = kind === 'open' ? ['✨', '📖', '🎉', '✨', '😄'] : Array.from({ length: 3 }, (_, index) => faces[(dodgeCount + index) % faces.length]);
+        icons.forEach((icon, index) => {
+          const effect = document.createElement('span');
+          const direction = index - (icons.length - 1) / 2;
+          effect.className = kind === 'open' ? 'letter-effect letter-effect-open' : 'letter-effect';
+          effect.textContent = icon;
+          effect.style.left = x + 'px';
+          effect.style.top = y + 'px';
+          effect.style.setProperty('--drift-x', direction * 30 + 'px');
+          effect.style.setProperty('--drift-y', -(kind === 'open' ? 78 : 42) - index % 2 * 14 + 'px');
+          effect.style.setProperty('--twist', direction * 12 + 'deg');
+          effect.style.animationDelay = kind === 'open' ? index * 18 + 'ms' : '0ms';
+          effectLayer.append(effect);
+        });
+        effectTimer = window.setTimeout(clearCoverEffects, 900);
+      }
+
+      effectLayer.addEventListener('animationend', event => {
+        if (event.target.parentNode === effectLayer) event.target.remove();
+      });
 
       function resetCover() {
+        clearCoverEffects();
         dodgeCount = 0;
         lastDodge = -Infinity;
         laterButton.style.left = '';
@@ -465,6 +517,7 @@
         opening = true;
         openButton.disabled = true;
         const finish = () => {
+          clearCoverEffects();
           cover.close();
           cover.classList.remove('leaving', 'returning');
           document.body.classList.remove('cover-open');
@@ -475,6 +528,9 @@
         };
         if (reducedMotion.matches) finish();
         else {
+          cover.classList.remove('returning');
+          popCoverEffects(openButton, 'open');
+          status.textContent = 'Selamat membaca 😄';
           cover.classList.add('leaving');
           window.setTimeout(finish, 650);
         }
@@ -501,6 +557,7 @@
 
       function dodge() {
         if (opening || !cover.open) return false;
+        popCoverEffects(laterButton, 'dodge');
         dodgeCount += 1;
         positionLaterButton();
         lastDodge = performance.now();
@@ -636,6 +693,7 @@
       });
       reducedMotion.addEventListener('change', () => {
         if (reducedMotion.matches) {
+          clearCoverEffects();
           document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
           if (revealObserver) revealObserver.disconnect();
         }

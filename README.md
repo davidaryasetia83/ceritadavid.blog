@@ -74,7 +74,7 @@ Saat halaman dibuka dengan JavaScript aktif, dialog pembuka tampil seperti sebua
 
 ### Tombol Buka ceritanya
 
-Tombol ini menjalankan animasi kartu membuka, kemudian menampilkan halaman cerita. Durasi animasi normal sekitar 650 ms. Fokus keyboard dipindahkan ke judul cerita tanpa memaksa perubahan posisi scroll.
+Tombol ini menjalankan animasi kartu membuka dengan kilau singkat dan lima emoji dekoratif (✨ 📖 🎉 ✨ 😄), kemudian menampilkan halaman cerita. Pesan kecil berubah menjadi **Selamat membaca 😄** saat animasi berjalan. Durasi animasi normal tetap sekitar 650 ms. Fokus keyboard dipindahkan ke judul cerita tanpa memaksa perubahan posisi scroll.
 
 ### Tombol Tolak
 
@@ -87,6 +87,8 @@ Tombol ini sengaja dibuat sebagai humor kecil pada pembuka.
 - Posisi berulang dari posisi awal di kanan atas, ke bawah kiri, lalu bawah kanan, kemudian kembali ke posisi awal.
 - Perpindahan tetap dibatasi di dalam area `letterChoices`.
 - Tombol tidak menutup cerita atau menjalankan tindakan penolakan lain.
+- Saat menghindar, tiga emoji kecil muncul sebentar dari posisi tombol sebelumnya. Emoji berganti dari pilihan 😅 😂 🏃 💨, lalu menghilang sendiri; label tombol tetap **Tolak**.
+- Efek berada di dalam kartu dan tidak menangkap klik. Satu reaksi mengganti reaksi sebelumnya, sehingga paling banyak lima elemen efek aktif; semuanya dibersihkan ketika kartu dibuka atau direset. Tidak ada library atau aset tambahan untuk efek ini.
 
 Pesan kecil di bawahnya berganti di antara:
 
@@ -120,7 +122,7 @@ Dialog foto dapat ditutup melalui tombol **Tutup foto**, klik pada latar dialog,
 - Tombol memakai elemen `button` dengan indikator fokus.
 - Dialog pembuka memakai elemen `dialog` bawaan browser.
 - Esc pada dialog pembuka tetap dapat menampilkan cerita sebagai akses keyboard; ini bukan tombol tambahan pada tampilan.
-- Preferensi `prefers-reduced-motion` menghilangkan transisi dan animasi bertahap. Tombol Tolak tetap berpindah secara langsung.
+- Preferensi `prefers-reduced-motion` menghilangkan transisi, animasi bertahap, kilau kartu, dan emoji bergerak. Tombol Tolak tetap berpindah secara langsung.
 - Cerita dan tautan YouTube tetap tersedia jika JavaScript dinonaktifkan; pembuka, pembesaran foto, dan player mengambang membutuhkan JavaScript.
 - Animasi bagian cerita muncul sekali saat bagian tersebut memasuki area pandang.
 - Animasi paket pada diagram berulang bergantian dari karyawan ke pendengar dan dari manajemen ke pendengar. Paket karyawan memakai warna aksen cokelat dan paket manajemen memakai biru. Keduanya berhenti sejenak di pendengar, menghilang, lalu mengulang dari awal tanpa diteruskan ke sisi lainnya. Satu siklus kedua arah berlangsung 4,4 detik. Gerakan paket dinonaktifkan saat reduced motion aktif.
@@ -328,6 +330,8 @@ Pemeriksaan awal di atas memakai simulasi DOM. Pada revisi player mengambang, pe
 Pemeriksaan alur player memakai respons iframe tiruan agar hasilnya tidak bergantung pada jaringan. Pemutaran video YouTube asli tetap perlu diperiksa pada hosting/perangkat pembaca; pengujian alur dan layout tidak membuktikan bahwa YouTube akan mengizinkan video diputar di semua lokasi.
 
 Pada uji pemutaran nyata dari server lokal, video pilihan `sdnDInjdWjw` menampilkan **This video is unavailable** di embed `youtube-nocookie.com` maupun `youtube.com`, meskipun iframe berhasil dimuat dan referrer situs terkirim. Unggahan audio resmi lain dari lagu yang sama, `mGVLxyJwDYk`, juga tidak dapat diputar pada lingkungan pengujian ini. Video contoh dokumentasi YouTube berhasil diputar melalui player yang sama. Karena itu, pemutaran lagu Bernadya belum terverifikasi; penyebab spesifik ketidaktersediaannya belum diketahui. Implementasi tetap memakai video pilihan semula dan menyediakan tautan **Buka di YouTube** sebagai cadangan.
+
+Efek emoji pembuka juga diperiksa di Chromium pada desktop 1280 × 900 dan HP 320 × 720 px. Tolak menampilkan tiga emoji, Buka ceritanya menampilkan lima emoji, dan efek dibersihkan setelah selesai maupun saat kartu dibuka ulang. Aktivasi berulang tidak menumpuk elemen; fokus, posisi scroll, dan ukuran kartu tetap sesuai. Pada reduced motion, emoji tidak ditampilkan dan cerita langsung terbuka. Tidak ada error JavaScript atau request eksternal tambahan selama pemeriksaan ini.
 
 Daftar pemeriksaan manual:
 
