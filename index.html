@@ -347,7 +347,7 @@
           <div class="chapter-label"><b>04</b> Lanjut jalan</div>
           <div class="prose">
             <h2>Sedihnya boleh ada. Hangatnya juga.</h2>
-            <p>Meski terasa sedikit sedih, aku percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Aku pun punya tujuan sendiri, jadi bisa memahami keinginan untuk melanjutkan perjalanan.</p>
+            <p>Meski terasa sedikit sedih, aku percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Aku pun punya tujuan sendiri, jadi aku bisa memahami keinginan seseorang untuk melanjutkan suatu perjalanan.</p>
             <p>Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Aku belum tahu mana yang lebih tepat. Mungkin nanti, di lain tempat, kita bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.</p>
             <p>Aku jadi teringat lagu Bernadya, <em>Kita Buat Menyenangkan</em>. Rasanya cocok buat suasana sekarang. Selagi masih bisa ketemu di kantor, ya tetap bekerja seperti biasa, ngobrol, dan ketawa bersama kalau ada kesempatan.</p>
             <aside class="song-note" aria-label="Lagu yang menemani cerita">
@@ -363,13 +363,13 @@
                 <small>Cuplikan lewat Spotify · tekan play di player untuk mendengarkan</small>
               </div>
             </aside>
-            <p>Ada juga kata yang sering disampaikan Mr. Jayden dan atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak Vita berikutnya.</p>
+            <p>Ada juga kata yang sering disampaikan Mr. Shin dan atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak Vita berikutnya.</p>
           </div>
         </section>
       </div>
 
       <section class="memories reveal" aria-labelledby="memoryTitle">
-        <div class="memory-copy"><p class="eyebrow">Galeri kenangan</p><h2 id="memoryTitle">Foto-foto yang mau kusimpan.</h2><p>Semoga suatu saat kita semua masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, kusimpan foto-foto ini dulu.</p></div>
+        <div class="memory-copy"><p class="eyebrow">Galeri kenangan</p><h2 id="memoryTitle">Foto-foto yang mau kusimpan.</h2><p>Semoga suatu saat kita semua masih ada waktu buat kumpul bareng dan ngobrol lagi. Untuk sekarang, kusimpan foto-foto ini dulu.</p></div>
         <div class="memory-gallery">
           <figure class="memory-photo">
             <button class="photo-button" type="button" aria-label="Perbesar foto bersama di luar ruangan"><img class="wide-photo" src="assets/kenangan-bersama.jpg" alt="Foto bersama rekan-rekan di luar ruangan." width="2048" height="1152" loading="lazy"></button>
@@ -418,7 +418,7 @@
     </div>
   </dialog>
 
-  <dialog class="cover-dialog" id="letterCover" aria-labelledby="coverTitle" aria-describedby="coverDescription">
+  <dialog class="cover-dialog" id="letterCover" aria-labelledby="coverTitle" aria-describedby="coverDescription" closedby="none">
     <div class="letter-sheet">
       <div class="letter-effects" id="letterEffects" aria-hidden="true"></div>
       <div class="letter-meta"><span class="eyebrow">ceritadavid.blog</span><span class="letter-volume" aria-hidden="true">01</span></div>
@@ -583,7 +583,9 @@
         if (event.detail === 0 || performance.now() - lastDodge > 300) dodge();
       });
       openButton.addEventListener('click', revealStory);
-      cover.addEventListener('cancel', event => { event.preventDefault(); revealStory(); });
+      // A mobile Back/close request must not open the story.
+      // Keep this fallback for browsers that do not support closedby="none".
+      cover.addEventListener('cancel', event => event.preventDefault());
       closeButton.addEventListener('click', () => showCover(true));
 
       const playSong = document.getElementById('playSong');

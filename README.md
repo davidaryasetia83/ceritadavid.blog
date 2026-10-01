@@ -121,7 +121,7 @@ Dialog foto dapat ditutup melalui tombol **Tutup foto**, klik pada latar dialog,
 
 - Tombol memakai elemen `button` dengan indikator fokus.
 - Dialog pembuka memakai elemen `dialog` bawaan browser.
-- Esc pada dialog pembuka tetap dapat menampilkan cerita sebagai akses keyboard; ini bukan tombol tambahan pada tampilan.
+- Kartu pembuka memakai `closedby="none"` dan membatalkan event `cancel` sebagai fallback. Back HP atau Esc tidak menjalankan **Buka ceritanya**. Untuk akses keyboard, fokuskan tombol **Buka ceritanya** lalu tekan Enter atau Space. Riwayat navigasi browser tidak ditambah atau diubah. Acuan: [perilaku close request pada dialog](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element).
 - Preferensi `prefers-reduced-motion` menghilangkan transisi, animasi bertahap, kilau kartu, dan emoji bergerak. Tombol Tolak tetap berpindah secara langsung.
 - Cerita serta tautan Spotify dan YouTube tetap tersedia jika JavaScript dinonaktifkan; pembuka, pembesaran foto, dan player mengambang membutuhkan JavaScript.
 - Animasi bagian cerita muncul sekali saat bagian tersebut memasuki area pandang.
@@ -338,12 +338,15 @@ Pemutaran Spotify juga diperiksa memakai layanan asli dari server lokal. Dalam s
 
 Efek emoji pembuka juga diperiksa di Chromium pada desktop 1280 × 900 dan HP 320 × 720 px. Tolak menampilkan tiga emoji, Buka ceritanya menampilkan lima emoji, dan efek dibersihkan setelah selesai maupun saat kartu dibuka ulang. Aktivasi berulang tidak menumpuk elemen; fokus, posisi scroll, dan ukuran kartu tetap sesuai. Pada reduced motion, emoji tidak ditampilkan dan cerita langsung terbuka. Tidak ada error JavaScript atau request eksternal tambahan selama pemeriksaan ini.
 
+Perbaikan Back pembuka diperiksa di Chromium pada ukuran HP 360 × 800, HP 320 × 720 dengan reduced motion, dan desktop 1280 × 900. `requestClose()` dan event `cancel` tidak membuka cerita, Esc tetap mempertahankan pembuka, sedangkan klik dan Enter pada **Buka ceritanya** membuka cerita seperti biasa. Back/Forward browser tetap menuju halaman sebelumnya dan kembali tanpa tambahan riwayat. Pembuka ulang mempertahankan scroll saat permintaan tutup dibatalkan; Esc pada galeri tetap menutup foto. Pengujian ini memakai emulasi HP dan permintaan tutup native, bukan tombol hardware pada perangkat Android/iOS nyata.
+
 Daftar pemeriksaan manual:
 
 - [ ] Buka halaman di desktop dan HP.
 - [ ] Pastikan dua foto terlihat di dalam kartu pembuka.
 - [ ] Pastikan Buka ceritanya mudah dijangkau.
 - [ ] Dekati atau sentuh Tolak beberapa kali; pastikan terus berpindah dalam area pilihan.
+- [ ] Saat pembuka tampil, tekan Back HP; pastikan isi cerita tidak terbuka otomatis. Gunakan **Buka ceritanya** untuk masuk.
 - [ ] Buka cerita, scroll, lalu gunakan Tutup cerita.
 - [ ] Perbesar foto galeri, kemudian tutup dan lanjutkan membaca.
 - [ ] Tekan **Dengarkan cuplikan**, lalu play di player Spotify; periksa pemutaran cuplikan dan posisi kartu saat scroll pada desktop serta HP.
