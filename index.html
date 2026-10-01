@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172735">
+  <meta name="description" content="Catatan David tentang rekan kerja, rasa percaya, dan perjalanan berikutnya. Let’s Journey into the World, Vol. 01.">
+  <title>Let’s Journey into the World — Cerita David</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23172735'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='49' fill='%23f7e8c9'%3Ed%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fcfbf8;
+      --ink: #172735;
+      --muted: #5f676b;
+      --line: #dddcd4;
+      --gold: #9a5925;
+      --blue: #284f9a;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    body.cover-open, body.photo-open { overflow: hidden; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; cursor: pointer; }
+    a { color: inherit; text-underline-offset: .24em; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
+    button:disabled { cursor: default; }
+    ::selection { background: #f1d9b0; color: var(--ink); }
+    img { display: block; max-width: 100%; height: auto; }
+    .skip-link { position: fixed; top: -6rem; left: 1rem; z-index: 20; padding: .8rem 1rem; background: white; border: 2px solid var(--ink); }
+    .skip-link:focus { top: 1rem; }
+    .site-header { min-height: 5rem; position: sticky; top: 0; z-index: 5; background: rgba(252,251,248,.96); border-bottom: 1px solid var(--line); }
+    .header-inner { width: min(1120px, calc(100% - 3rem)); min-height: 5rem; margin: auto; display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
+    .brand { font-family: var(--serif); font-size: 1.55rem; font-weight: 700; letter-spacing: -.06em; text-decoration: none; }
+    .brand span { color: var(--gold); }
+    .header-right { display: flex; align-items: center; gap: 1.6rem; }
+    .edition { font-size: .75rem; font-weight: 600; letter-spacing: .16em; color: var(--muted); text-transform: uppercase; }
+    .cover-toggle { padding: .62rem .95rem; border: 1px solid #bfc3c3; border-radius: 100px; background: transparent; font-size: .875rem; color: var(--ink); transition: background .2s; }
+    .cover-toggle:hover { background: #ecece6; }
+    .reading-line { height: 2px; position: absolute; bottom: -1px; left: 0; width: 100%; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+    .hero { width: min(1120px, calc(100% - 3rem)); margin: auto; padding-top: 4.4rem; }
+    .eyebrow { margin: 0; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .16em; line-height: 1.6; }
+    .hero-title-row { display: grid; grid-template-columns: 1fr 250px; gap: 3rem; align-items: end; margin: 1.2rem 0 2.7rem; }
+    h1 { max-width: 800px; margin: 0; font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.65rem); line-height: 1.05; letter-spacing: -.055em; font-weight: 400; }
+    h1 em { display: block; color: var(--gold); font-weight: 400; }
+    .hero-aside { padding-bottom: .25rem; }
+    .deck { margin: 0 0 1.5rem; font-size: 1.125rem; line-height: 1.65; }
+    .byline { font-size: .875rem; line-height: 1.8; color: var(--muted); margin: 0; }
+    .byline strong { color: var(--ink); font-weight: 600; }
+    .hero-photo { margin: 0; }
+    .hero-photo img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #e9e7e0; border-radius: 2px; }
+    figcaption { font-size: .8125rem; line-height: 1.65; color: var(--muted); }
+    .hero-photo figcaption { padding-top: .8rem; display: flex; justify-content: space-between; gap: 1rem; }
+    .caption-number { font-size: .75rem; letter-spacing: .1em; flex-shrink: 0; }
+    .story { max-width: 960px; width: calc(100% - 3rem); margin: 5rem auto 0; }
+    .chapter { display: grid; grid-template-columns: 130px minmax(0, 1fr); column-gap: 3rem; margin-bottom: 4.5rem; }
+    .chapter-label { padding-top: .35rem; font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; line-height: 1.6; color: var(--muted); }
+    .chapter-label b { display: block; font-family: var(--serif); font-size: 2rem; font-weight: 400; letter-spacing: -.05em; color: var(--gold); margin-bottom: .6rem; }
+    .prose { min-width: 0; }
+    .prose h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.45rem); font-weight: 400; line-height: 1.25; letter-spacing: -.025em; margin: 0 0 1.7rem; }
+    .prose p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.9; margin: 0 0 1.35rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose .opening::first-letter { float: left; font-size: 4.9rem; line-height: .9; padding: .2rem .65rem 0 0; color: var(--gold); }
+    .prose strong { font-weight: 700; }
+    .prose em { font-style: italic; }
+    .pull-quote { margin: 2.7rem 0; padding: .25rem 0 .3rem 1.5rem; border-left: 2px solid var(--gold); }
+    .pull-quote p { font-size: clamp(1.7rem, 3.8vw, 2.3rem); line-height: 1.45; color: var(--gold); letter-spacing: -.025em; }
+    .network-note { position: relative; margin: 2.4rem 0; padding: 1.5rem 1.4rem 1.25rem; border: 1px solid var(--line); border-radius: 4px; background: #f2f4f6; }
+    .network-heading { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: #54606a; margin-bottom: 1.45rem; }
+    .network-track { display: grid; grid-template-columns: 1fr 1fr 1fr; position: relative; isolation: isolate; gap: .6rem; }
+    .network-track::before { content: ''; position: absolute; top: 19px; left: 16.666%; right: 16.666%; height: 1px; background: #a9b6c8; z-index: -1; }
+    .network-node { text-align: center; font-size: .875rem; line-height: 1.5; }
+    .node-icon { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #a9b6c8; border-radius: 50%; margin: 0 auto .65rem; background: #f2f4f6; color: #465769; font-size: .75rem; font-weight: 600; }
+    .listener .node-icon { background: var(--ink); border-color: var(--ink); color: white; }
+    .network-node small { display: block; font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+    .packet { position: absolute; top: 15px; left: 16.666%; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px #f2f4f6; opacity: 0; }
+    .network-note.is-visible .packet { animation: packet-arrival 2.2s ease .25s 1 forwards; }
+    .network-note figcaption { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #d9dee2; }
+    @keyframes packet-arrival { 0% { left: 16.666%; opacity: 0; } 12% { opacity: 1; } 72% { left: calc(50% - 4px); opacity: 1; } 100% { left: calc(50% - 4px); opacity: 0; } }
+    .song-note { display: flex; gap: 1rem; align-items: center; padding: 1.2rem 0; margin: 2rem 0; border-block: 1px solid var(--line); }
+    .song-note .music-mark { font-family: var(--serif); font-size: 2.3rem; color: var(--gold); width: 2.5rem; text-align: center; }
+    .song-copy { flex: 1; min-width: 0; }
+    .song-copy span { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .4rem; }
+    .song-copy a { font-size: .9375rem; font-weight: 600; line-height: 1.5; }
+    .song-copy small { display: block; font-size: .8125rem; color: var(--muted); margin-top: .3rem; }
+    .memories { width: min(960px, calc(100% - 3rem)); margin: 1rem auto 5rem; }
+    .memory-gallery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
+    .memory-photo { margin: 0; padding: .85rem .85rem 1.15rem; background: #fff; border: 1px solid #deded8; box-shadow: 0 12px 36px #1727350d; transform: rotate(-2deg); }
+    .memory-photo img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+    .memory-photo .wide-photo { aspect-ratio: 16 / 9; }
+    .memory-photo:nth-child(even) { transform: rotate(1.5deg); }
+    .photo-button { display: block; width: 100%; border: 0; padding: 0; background: transparent; cursor: zoom-in; }
+    .memory-photo figcaption { padding: .8rem .2rem 0; }
+    .memory-copy { max-width: 680px; margin-bottom: 2.2rem; }
+    .memory-copy .eyebrow { color: var(--gold); }
+    .memory-copy h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4.5vw, 3.1rem); letter-spacing: -.04em; line-height: 1.25; margin: 1rem 0; }
+    .memory-copy p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.8; color: var(--muted); }
+    .photo-dialog { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 1.5rem; border: 0; background: #172735f5; color: white; overflow-y: auto; }
+    .photo-dialog[open] { display: flex; align-items: center; justify-content: center; }
+    .photo-dialog::backdrop { background: #172735; }
+    .photo-view { width: min(1100px, 100%); margin-block: auto; }
+    .photo-toolbar { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+    .photo-close { border: 1px solid #bfc7ce; background: transparent; color: white; border-radius: 100px; min-height: 44px; padding: .65rem 1rem; font-size: .875rem; }
+    .photo-view figure { margin: 0; }
+    .photo-view img { width: 100%; max-height: calc(100vh - 12rem); max-height: calc(100dvh - 12rem); object-fit: contain; }
+    .photo-view figcaption { color: #d1d7dd; margin-top: 1rem; text-align: center; }
+    .photo-dialog button:focus-visible { outline-color: #dfc394; }
+    .closing { background: var(--ink); color: var(--paper); padding: 4.8rem 1.5rem 4.6rem; }
+    .closing-inner { max-width: 780px; margin: auto; }
+    .closing .eyebrow { color: #dfc394; }
+    .closing h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 7vw, 4.5rem); line-height: 1.15; letter-spacing: -.045em; margin: 1.2rem 0 2rem; }
+    .closing p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.9; max-width: 680px; margin: 0 0 1.3rem; color: #e2e5e5; }
+    .closing .goodbye { font-style: italic; color: #dfc394; margin-top: 2rem; font-size: 1.75rem; }
+    .signature { border-top: 1px solid #ffffff26; margin-top: 2.5rem; padding-top: 1.6rem; display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+    .signature-name { font-family: var(--serif); font-size: 1.7rem; font-style: italic; }
+    .signature-place { text-align: right; font-size: .8125rem; color: #bcc5cb; line-height: 1.75; }
+    .site-footer { max-width: 1120px; width: calc(100% - 3rem); margin: auto; padding: 1.5rem 0; display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .8125rem; line-height: 1.6; }
+    .reveal { opacity: 1; }
+    .motion-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .cover-dialog { position: fixed; inset: 0; margin: 0; padding: 2rem 1.2rem; width: 100%; max-width: none; height: 100%; max-height: none; border: 0; background: #172735; color: var(--ink); overflow-y: auto; perspective: 1600px; }
+    .cover-dialog[open] { display: flex; align-items: center; justify-content: center; }
+    .cover-dialog::backdrop { background: #172735; }
+    .cover-dialog::before { content: ''; position: fixed; width: 80vw; height: 80vw; max-width: 1050px; max-height: 1050px; border: 1px solid #ffffff0b; border-radius: 50%; pointer-events: none; }
+    .cover-photos { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 1rem; align-items: center; margin: 1.4rem .15rem 1.8rem; }
+    .cover-photo { min-width: 0; width: 100%; margin: 0; padding: .5rem .5rem .7rem; background: #fff; border: 1px solid #deded8; box-shadow: 0 5px 15px #1727350c; transform: rotate(-2.5deg); }
+    .cover-photo img { width: 100%; height: 7rem; object-fit: contain; }
+    .cover-photo figcaption { padding-top: .6rem; text-align: center; font-family: var(--serif); font-size: .8125rem; color: #5f676b; }
+    .cover-photo-right { transform: rotate(2.5deg); }
+    .letter-sheet { position: relative; width: min(550px, 100%); margin-block: auto; padding: 2.15rem 2.65rem 1.6rem; background: var(--paper); border-top: 5px solid #c5924d; border-radius: 3px; box-shadow: 0 25px 90px #0000003d; transform-origin: top center; }
+    .letter-meta { display: flex; justify-content: space-between; gap: 1rem; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
+    .letter-meta .eyebrow { font-size: .75rem; letter-spacing: .12em; }
+    .letter-volume { font-family: var(--serif); font-size: 1.4rem; color: var(--gold); }
+    .letter-title { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 3.45rem); font-weight: 400; line-height: 1.15; letter-spacing: -.045em; margin: 1.8rem 0 1rem; }
+    .letter-title em { color: var(--gold); font-weight: 400; }
+    .letter-description { font-family: var(--serif); font-size: 1.0625rem; line-height: 1.75; max-width: 380px; margin: 0 0 1.5rem; color: #5b6063; }
+    .letter-choices { position: relative; width: 100%; height: 7.4rem; }
+    .open-button, .later-button { position: absolute; top: 0; min-height: 3.0625rem; border-radius: 4px; padding: .8rem .8rem; line-height: 1.3; font-size: .9375rem; }
+    .open-button { left: 0; width: 58%; background: var(--ink); border: 1px solid var(--ink); color: white; transition: background .2s; }
+    .open-button:hover { background: #2e4456; }
+    .later-button { right: 0; width: 36%; background: transparent; border: 1px solid #bbbdb8; color: var(--muted); transition: top .18s ease, left .18s ease, background .2s; }
+    .later-button:hover { background: #f0eee7; }
+    .cover-status { margin: .2rem 0 .7rem; font-size: .8125rem; line-height: 1.55; min-height: 1.55rem; color: var(--muted); }
+    .cover-dialog.leaving { animation: backdrop-away .65s ease forwards; pointer-events: none; }
+    .cover-dialog.leaving::backdrop { animation: backdrop-away .65s ease forwards; }
+    .cover-dialog.leaving .letter-sheet { animation: letter-open .65s cubic-bezier(.3,.7,.2,1) forwards; }
+    .cover-dialog.returning .letter-sheet { animation: letter-return .45s ease both; }
+    @keyframes letter-open { 0% { opacity: 1; transform: rotateX(0) translateY(0); } 100% { opacity: 0; transform: rotateX(25deg) translateY(-65px) scale(.96); } }
+    @keyframes backdrop-away { 0%, 30% { background-color: #172735; } 100% { background-color: #17273500; } }
+    @keyframes letter-return { from { opacity: 0; transform: translateY(18px) rotateX(-8deg); } to { opacity: 1; transform: none; } }
+    @media (min-width: 1400px) { .hero { padding-top: 5rem; } }
+    @media (max-width: 800px) {
+      .hero-title-row { grid-template-columns: 1fr; gap: 1.8rem; }
+      .hero-aside { display: flex; align-items: start; gap: 2rem; }
+      .deck { flex: 1; max-width: 400px; margin-bottom: 0; }
+      .byline { min-width: 150px; }
+      .chapter { grid-template-columns: 90px minmax(0,1fr); gap: 1.7rem; }
+      .memories { gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .header-inner, .hero, .story, .memories, .site-footer { width: calc(100% - 2.25rem); }
+      .header-inner { min-height: 4.5rem; gap: .5rem; }
+      .site-header { min-height: 4.5rem; }
+      .brand { font-size: 1.3rem; }
+      .edition { display: none; }
+      .cover-toggle { font-size: .8125rem; padding: .65rem .8rem; }
+      .hero { padding-top: 2.6rem; }
+      .hero-title-row { margin: 1rem 0 1.7rem; gap: 1.4rem; }
+      h1 { font-size: clamp(2.75rem, 10.3vw, 3.9rem); }
+      .hero-aside { display: block; }
+      .deck { font-size: 1rem; line-height: 1.7; max-width: 340px; margin-bottom: .9rem; }
+      .byline br { display: none; }
+      .byline strong::after { content: ' · '; color: var(--muted); }
+      .hero-photo figcaption { gap: .75rem; font-size: .75rem; }
+      .story { margin-top: 3rem; }
+      .chapter { display: block; margin-bottom: 3rem; }
+      .chapter-label { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.1rem; padding: 0; }
+      .chapter-label b { font-size: 1.4rem; margin: 0; }
+      .prose h2 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+      .prose p { font-size: 1.1rem; line-height: 1.85; }
+      .prose .opening::first-letter { font-size: 4.2rem; }
+      .pull-quote { margin: 2rem 0; padding-left: 1rem; }
+      .pull-quote p { font-size: 1.65rem; line-height: 1.5; }
+      .network-note { padding: 1.25rem .7rem 1rem; }
+      .network-heading { font-size: .75rem; }
+      .network-node { font-size: .8125rem; }
+      .network-node small { font-size: .75rem; }
+      .memories { margin-top: .5rem; margin-bottom: 3rem; }
+      .memory-gallery { grid-template-columns: 1fr; gap: 2rem; }
+      .memory-photo { width: min(380px, calc(100% - .8rem)); margin: auto; }
+      .memory-copy { padding-top: .4rem; }
+      .memory-copy h2 { font-size: 2.3rem; }
+      .closing { padding: 3.1rem 1.125rem; }
+      .closing p { font-size: 1.1rem; line-height: 1.85; }
+      .signature { align-items: start; }
+      .signature-place { font-size: .75rem; }
+      .site-footer { display: block; font-size: .75rem; }
+      .site-footer span { display: block; margin-top: .3rem; }
+      .cover-dialog { padding: 1.2rem .85rem; }
+      .letter-sheet { padding: 1.35rem 1.25rem 1rem; }
+      .letter-meta .eyebrow { font-size: .75rem; letter-spacing: .05em; }
+      .letter-title { font-size: clamp(2.3rem, 10vw, 3rem); margin-top: 1.5rem; }
+      .letter-description { font-size: 1rem; margin-bottom: 1.3rem; }
+      .cover-photos { gap: .75rem; margin: 1.25rem .1rem 1.5rem; }
+      .cover-photo { padding: .4rem .4rem .65rem; }
+      .cover-photo img { height: clamp(5rem, 22vw, 6rem); }
+      .cover-photo figcaption { font-size: .75rem; padding-top: .4rem; }
+      .open-button, .later-button { font-size: .875rem; padding-inline: .4rem; }
+      .letter-choices { height: 7.25rem; }
+    }
+    @media (max-height: 690px) {
+      .cover-dialog[open] { align-items: start; }
+      .letter-title { margin-top: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
+      .motion-ready .reveal { opacity: 1; transform: none; }
+      .packet { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#cerita">Langsung ke cerita</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#awal" aria-label="Cerita David, kembali ke awal">cerita david<span>.</span></a>
+      <div class="header-right">
+        <span class="edition">Catatan 01</span>
+        <button class="cover-toggle" id="closeStory" type="button" hidden>Tutup cerita</button>
+      </div>
+    </div>
+    <div class="reading-line" id="readingLine" aria-hidden="true"></div>
+  </header>
+
+  <main id="awal">
+    <article aria-labelledby="storyTitle">
+      <header class="hero">
+        <p class="eyebrow">Vol. 01 &nbsp; / &nbsp; Catatan dari Jakarta</p>
+        <div class="hero-title-row">
+          <h1 id="storyTitle" tabindex="-1">Let’s Journey <em>into the World.</em></h1>
+          <div class="hero-aside">
+            <p class="deck">Tentang rekan kerja yang mau mendengar, dan kabar resign yang ternyata bikin kepikiran.</p>
+            <p class="byline"><strong>David</strong><br><time datetime="2026-10-01">1 Oktober 2026</time> &nbsp;·&nbsp; ± 5 menit</p>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/kenangan-bersama.jpg" alt="Foto bersama rekan-rekan di luar ruangan, beberapa orang melambaikan tangan ke kamera." width="2048" height="1152" fetchpriority="high">
+          <figcaption><span>Foto bersama yang ingin saya simpan sebagai kenangan.</span><span class="caption-number">KENANGAN / 01</span></figcaption>
+        </figure>
+      </header>
+
+      <div class="story" id="cerita">
+        <section class="chapter reveal">
+          <div class="chapter-label"><b>01</b> Pagi itu</div>
+          <div class="prose">
+            <h2>Pagi yang terasa sedikit berbeda.</h2>
+            <p class="opening">Pagi itu, Kamis, 1 Oktober 2026, langit Jakarta sedikit mendung. Jalanan mulai riuh oleh suara kendaraan bermotor, sementara kamar saya masih cukup sunyi. Alarm berbunyi pukul 05.30 WIB, ditemani dengung AC yang masih menyala. Kasur terasa nyaman. Sebagai orang yang menyukai hawa dingin, rasanya selalu butuh sedikit usaha untuk beranjak. AC sudah mode <em>Powerful</em>, semangat bangunnya masih <em>loading</em>.</p>
+            <p>Rutinitasnya seperti biasa: bangun tidur, berdoa sejenak, lalu merapikan kasur. Setelah mandi dan menyiapkan keperluan, saya bersiap berangkat kerja. Aktivitas yang sama setiap pagi, dan kadang memang terasa sedikit membosankan.</p>
+            <p>Tetapi pagi itu ada sesuatu yang terasa berbeda. Pikiran saya berusaha menjalani hari seperti biasa, sementara perasaan saya masih mengganjal. Sulit dijelaskan dengan kata-kata. Entah kenapa, saya memikirkan kantor dan orang-orang yang setiap hari saya temui di sana.</p>
+            <p>Di tempat itu, kami tumbuh bersama dalam sebuah tim kecil. Pekerjaan menuntut kami belajar dan berkembang dengan cepat, tetapi di sela kesibukannya juga terbentuk rasa akrab dan kekeluargaan. Di tengah kerasnya hidup di perantauan, kedekatan seperti itu membuat hari-hari kerja terasa sedikit lebih ringan.</p>
+          </div>
+        </section>
+
+        <section class="chapter reveal">
+          <div class="chapter-label"><b>02</b> Kabar itu</div>
+          <div class="prose">
+            <h2>Yang membuat kantor terasa dekat.</h2>
+            <p>Belakangan, ada kabar di kantor bahwa salah satu rekan kerja akan mengundurkan diri. Ia sudah mengajukan pemberitahuan satu bulan sebelum meninggalkan pekerjaannya, atau <em>one month notice</em>. Bagi sebagian dari kami, kabar itu cukup mengejutkan.</p>
+            <p>Resign memang hal yang wajar dalam dunia kerja. Tetap saja, rasanya berbeda ketika yang akan pergi adalah seseorang yang sudah dekat dengan kita. Seseorang yang selama ini bersedia mendengarkan keluh kesah, bahkan ketika cerita itu hanya perlu didengar. Yang membuat sedikit sedih justru membayangkan hal-hal biasa: percakapan di sela pekerjaan, atau rasa lega setelah selesai bercerita.</p>
+            <p>Mbak Vit adalah seorang HR yang cukup akrab dengan rekan-rekan di kantor. Perannya terasa strategis karena ia bisa menjaga hubungan baik dengan karyawan maupun manajemen. Ia mau menerima cerita dan masukan, termasuk dari karyawan biasa seperti saya.</p>
+            <p>Tentu tidak semua cerita harus diteruskan ke atasan. Ada hal-hal yang cukup berhenti sebagai percakapan, dan bagi saya, didengarkan saja kadang sudah membuat hati sedikit lega.</p>
+            <p>Saya membayangkan, di sisi lain, ia mungkin juga menjadi tempat bercerita bagi atasan. Barangkali mereka pun punya keluh kesah yang tidak bisa dibagikan kepada semua karyawan. Menjaga kepercayaan di antara kedua sisi itu tentu membutuhkan kepekaan.</p>
+          </div>
+        </section>
+
+        <section class="chapter reveal">
+          <div class="chapter-label"><b>03</b> Koneksi</div>
+          <div class="prose">
+            <h2>Ada koneksi yang tidak terlihat di layar monitoring.</h2>
+            <p>Sebagai orang yang sehari-hari berkutat dengan <em>network</em>, saya terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: <strong>rasa percaya antara orang-orangnya.</strong> Kalau boleh memakai sedikit bahasa pekerjaan, perannya mirip <em>default gateway</em>, pintu penghubung yang membantu komunikasi antarjaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.</p>
+            <p>Kami datang membawa “paket data” masing-masing. Ada masukan, ada pertanyaan, kadang ada keluh kesah yang sudah terlalu panjang untuk diringkas dalam satu chat. Dia bersedia mendengarkan. Untungnya, kalau mau cerita, kami tidak perlu isi formulir atau bikin tiket dulu. Bisa langsung bicara sebagai sesama manusia.</p>
+            <figure class="network-note reveal" aria-label="Analogi HR sebagai penghubung antara karyawan dan manajemen. Sebuah paket curhat bergerak dari karyawan lalu berhenti di pendengar.">
+              <div class="network-heading">Sebuah analogi kecil</div>
+              <div class="network-track" aria-hidden="true">
+                <div class="network-node"><div class="node-icon">01</div>Karyawan<small>Cerita &amp; masukan</small></div>
+                <div class="network-node listener"><div class="node-icon">HR</div>Pendengar<small>Ruang untuk percaya</small></div>
+                <div class="network-node"><div class="node-icon">02</div>Manajemen<small>Sudut pandang lain</small></div>
+                <span class="packet"></span>
+              </div>
+              <figcaption>Ada cerita yang cukup sampai pada seseorang yang mau mendengar.</figcaption>
+            </figure>
+            <p>Begitu tahu ia akan pergi, rasanya seperti menyadari bahwa jalur yang sudah akrab akan berubah. Kami tentu bisa menyesuaikan diri. Tapi mungkin nanti ada momen ketika saya ingin bercerita, lalu baru ingat: oh iya, dia sudah tidak di sini.</p>
+            <blockquote class="pull-quote"><p>Kalau urusan jaringan, saya bisa mencari rute baru. Untuk kebiasaan bercerita kepada orang yang sama, sepertinya saya juga perlu memberi diri sendiri sedikit waktu.</p></blockquote>
+          </div>
+        </section>
+
+        <section class="chapter reveal">
+          <div class="chapter-label"><b>04</b> Lanjut jalan</div>
+          <div class="prose">
+            <h2>Sedihnya boleh ada. Hangatnya juga.</h2>
+            <p>Meski terasa sedikit sedih, saya percaya setiap orang punya tujuan hidup yang ingin dikejar. Bisa jadi ada langkah baru dalam karier, atau peluang di luar sana yang terasa lebih cocok. Saya pun punya tujuan sendiri, jadi saya bisa memahami keinginan untuk melanjutkan perjalanan.</p>
+            <p>Ada yang bilang dunia ini luas, ada juga yang merasa dunia ini sempit. Saya belum tahu mana yang lebih tepat. Mungkin nanti, di suatu tempat, perjalanan kami bisa bertemu lagi. Semoga hubungan baik yang sudah terjalin tetap bisa dijaga.</p>
+            <p>Saya jadi teringat lagu Bernadya, <em>Kita Buat Menyenangkan</em>. Buat saya, lagu itu cocok untuk hari ini. Selagi masih bisa bertemu di kantor, saya ingin menikmati waktu yang ada, tetap bekerja seperti biasa, dan menyisakan ruang untuk tertawa. Sedihnya boleh ada. Semoga kenangan yang dibawa pulang tetap hangat.</p>
+            <aside class="song-note" aria-label="Lagu yang menemani cerita">
+              <span class="music-mark" aria-hidden="true">♪</span>
+              <div class="song-copy"><span>Kalau ingin ditemani lagu</span><a href="https://www.youtube.com/watch?v=sdnDInjdWjw" target="_blank" rel="noopener noreferrer">Kita Buat Menyenangkan — Bernadya</a><small>Video resmi di YouTube · terbuka di tab baru</small></div>
+            </aside>
+            <p>Saya juga teringat kata yang sering disampaikan Mr. Jayden dan para atasan di sini: “Semangat.” Singkat, tetapi cukup membekas saat pekerjaan terasa padat dan melelahkan. Mungkin kali ini, semangat itu juga bisa menjadi bekal untuk perjalanan Mbak berikutnya.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="memories reveal" aria-labelledby="memoryTitle">
+        <div class="memory-copy"><p class="eyebrow">Galeri kenangan</p><h2 id="memoryTitle">Foto-foto yang mau saya simpan.</h2><p>Semoga nanti masih ada waktu buat kumpul dan ngobrol lagi. Untuk sekarang, saya simpan foto-foto ini dulu.</p></div>
+        <div class="memory-gallery">
+          <figure class="memory-photo">
+            <button class="photo-button" type="button" aria-label="Perbesar foto bersama di luar ruangan"><img class="wide-photo" src="assets/kenangan-bersama.jpg" alt="Foto bersama rekan-rekan di luar ruangan." width="2048" height="1152" loading="lazy"></button>
+            <figcaption>Foto bersama yang ingin saya simpan sebagai kenangan.</figcaption>
+          </figure>
+          <figure class="memory-photo">
+            <button class="photo-button" type="button" aria-label="Perbesar foto bersama di depan restoran"><img src="assets/kumpul-lagi.jpg" alt="Rekan-rekan berfoto bersama di depan sebuah restoran." width="640" height="640" loading="lazy"></button>
+            <figcaption>Semoga nanti masih bisa kumpul dan foto begini lagi.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closingTitle">
+        <div class="closing-inner reveal">
+          <span class="eyebrow">Untuk perjalanan berikutnya</span>
+          <h2 id="closingTitle">Good luck, Mbak.</h2>
+          <p>Senang bisa bertemu dan berkenalan denganmu. Kita sama-sama anak daerah yang sedang mengadu nasib di Jakarta, sama-sama belajar bertahan dalam sibuknya ibu kota.</p>
+          <p>Terima kasih sudah mau mendengar. Semoga langkah berikutnya membawa banyak hal baik untukmu.</p>
+          <p class="goodbye">See you at the top.</p>
+          <div class="signature"><span class="signature-name">David</span><span class="signature-place">Tebet, Jakarta Selatan<br>1 Oktober 2026</span></div>
+        </div>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><span>cerita david. &nbsp;·&nbsp; Vol. 01</span><span>Ditulis oleh David.</span></footer>
+
+  <dialog class="photo-dialog" id="photoViewer" aria-label="Foto kenangan">
+    <div class="photo-view">
+      <div class="photo-toolbar"><button class="photo-close" id="closePhoto" type="button">Tutup foto <span aria-hidden="true">×</span></button></div>
+      <figure><img id="fullPhoto" alt=""><figcaption id="fullPhotoCaption"></figcaption></figure>
+    </div>
+  </dialog>
+
+  <dialog class="cover-dialog" id="letterCover" aria-labelledby="coverTitle" aria-describedby="coverDescription">
+    <div class="letter-sheet">
+      <div class="letter-meta"><span class="eyebrow">Cerita David</span><span class="letter-volume" aria-hidden="true">01</span></div>
+      <h2 class="letter-title" id="coverTitle">Sebelum lanjut,<br><em>baca sebentar?</em></h2>
+      <p class="letter-description" id="coverDescription">Ada sedikit cerita tentang kantor, orang-orangnya, dan perjalanan berikutnya. Boleh dibaca pelan-pelan.</p>
+      <div class="cover-photos">
+        <figure class="cover-photo">
+          <img src="assets/kenangan-bersama.jpg" alt="Foto kenangan bersama rekan-rekan di luar ruangan." width="2048" height="1152">
+          <figcaption>Kenangan 01</figcaption>
+        </figure>
+        <figure class="cover-photo cover-photo-right">
+          <img src="assets/kumpul-lagi.jpg" alt="Foto kenangan bersama rekan-rekan di depan restoran." width="640" height="640">
+          <figcaption>Kenangan 02</figcaption>
+        </figure>
+      </div>
+      <div class="letter-choices" id="letterChoices">
+        <button type="button" class="open-button" id="openStory" autofocus>Buka ceritanya</button>
+        <button type="button" class="later-button" id="laterButton">Tolak</button>
+      </div>
+      <p class="cover-status" id="coverStatus" role="status" aria-live="polite">Baca dulu, ya. Ada sedikit cerita buat Mbak.</p>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      'use strict';
+      const cover = document.getElementById('letterCover');
+      const openButton = document.getElementById('openStory');
+      const laterButton = document.getElementById('laterButton');
+      const closeButton = document.getElementById('closeStory');
+      const choiceZone = document.getElementById('letterChoices');
+      const status = document.getElementById('coverStatus');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let dodgeCount = 0;
+      let lastDodge = -Infinity;
+      let opening = false;
+
+      function resetCover() {
+        dodgeCount = 0;
+        lastDodge = -Infinity;
+        laterButton.style.left = '';
+        laterButton.style.top = '';
+        laterButton.style.right = '';
+        laterButton.textContent = 'Tolak';
+        status.textContent = 'Baca dulu, ya. Ada sedikit cerita buat Mbak.';
+      }
+
+      function showCover(isReturn) {
+        if (cover.open || opening) return;
+        resetCover();
+        cover.classList.remove('leaving', 'returning');
+        if (isReturn && !reducedMotion.matches) cover.classList.add('returning');
+        cover.showModal();
+        document.body.classList.add('cover-open');
+        cover.scrollTop = 0;
+        openButton.focus({ preventScroll: true });
+      }
+
+      function revealStory() {
+        if (opening || !cover.open) return;
+        opening = true;
+        openButton.disabled = true;
+        const finish = () => {
+          cover.close();
+          cover.classList.remove('leaving', 'returning');
+          document.body.classList.remove('cover-open');
+          openButton.disabled = false;
+          opening = false;
+          document.getElementById('storyTitle').focus({ preventScroll: true });
+          observeReveals();
+        };
+        if (reducedMotion.matches) finish();
+        else {
+          cover.classList.add('leaving');
+          window.setTimeout(finish, 650);
+        }
+      }
+
+      function dodge() {
+        if (opening || !cover.open) return false;
+        const zoneWidth = choiceZone.clientWidth;
+        const buttonWidth = laterButton.offsetWidth;
+        const buttonHeight = laterButton.offsetHeight;
+        const openHeight = openButton.offsetHeight;
+        const top = Math.min(choiceZone.clientHeight - buttonHeight, Math.max(openHeight + 12, 62));
+        const left = dodgeCount % 2 === 0 ? 0 : Math.max(0, zoneWidth - buttonWidth);
+        laterButton.style.right = 'auto';
+        laterButton.style.left = left + 'px';
+        laterButton.style.top = Math.max(0, top) + 'px';
+        dodgeCount += 1;
+        lastDodge = performance.now();
+        const messages = ['Eh, tombolnya kabur 😄', 'Sepertinya dia ingin ceritanya dibuka.', 'Curhatnya belum selesai, tombolnya sudah kabur.'];
+        status.textContent = messages[(dodgeCount - 1) % messages.length];
+        return true;
+      }
+
+      laterButton.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') dodge();
+      });
+      laterButton.addEventListener('pointerdown', event => {
+        event.preventDefault();
+        if (event.pointerType !== 'mouse' || performance.now() - lastDodge > 180) dodge();
+      });
+      laterButton.addEventListener('click', event => {
+        event.preventDefault();
+        if (event.detail === 0 || performance.now() - lastDodge > 300) dodge();
+      });
+      openButton.addEventListener('click', revealStory);
+      cover.addEventListener('cancel', event => { event.preventDefault(); revealStory(); });
+      closeButton.addEventListener('click', () => showCover(true));
+
+      const photoViewer = document.getElementById('photoViewer');
+      const fullPhoto = document.getElementById('fullPhoto');
+      const fullPhotoCaption = document.getElementById('fullPhotoCaption');
+      document.querySelectorAll('.photo-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const image = button.querySelector('img');
+          fullPhoto.src = image.currentSrc || image.src;
+          fullPhoto.alt = image.alt;
+          fullPhotoCaption.textContent = button.closest('figure').querySelector('figcaption').textContent;
+          if (typeof photoViewer.showModal === 'function') {
+            photoViewer.showModal();
+            document.body.classList.add('photo-open');
+          }
+        });
+      });
+      document.getElementById('closePhoto').addEventListener('click', () => photoViewer.close());
+      photoViewer.addEventListener('click', event => {
+        if (event.target === photoViewer) photoViewer.close();
+      });
+      photoViewer.addEventListener('close', () => document.body.classList.remove('photo-open'));
+
+      let revealObserver;
+      function observeReveals() {
+        if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+        if (!revealObserver) {
+          revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.06 });
+          document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+        }
+      }
+
+      let scrollScheduled = false;
+      const line = document.getElementById('readingLine');
+      function updateReadingLine() {
+        const range = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0;
+        line.style.transform = 'scaleX(' + progress + ')';
+        scrollScheduled = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!scrollScheduled) { scrollScheduled = true; requestAnimationFrame(updateReadingLine); }
+      }, { passive: true });
+      window.addEventListener('resize', () => {
+        updateReadingLine();
+        if (cover.open && dodgeCount > 0) {
+          laterButton.style.left = Math.max(0, Math.min(parseFloat(laterButton.style.left) || 0, choiceZone.clientWidth - laterButton.offsetWidth)) + 'px';
+          laterButton.style.top = Math.max(0, choiceZone.clientHeight - laterButton.offsetHeight) + 'px';
+        }
+      });
+      reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) {
+          document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
+          if (revealObserver) revealObserver.disconnect();
+        }
+      });
+
+      if (typeof cover.showModal === 'function') {
+        closeButton.hidden = false;
+        if (!reducedMotion.matches && 'IntersectionObserver' in window) document.body.classList.add('motion-ready');
+        showCover(false);
+      } else observeReveals();
+      updateReadingLine();
+    })();
+  </script>
+</body>
+</html>
