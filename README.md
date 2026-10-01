@@ -123,6 +123,7 @@ Dialog foto dapat ditutup melalui tombol **Tutup foto**, klik pada latar dialog,
 - Preferensi `prefers-reduced-motion` menghilangkan transisi dan animasi bertahap. Tombol Tolak tetap berpindah secara langsung.
 - Cerita dan tautan YouTube tetap tersedia jika JavaScript dinonaktifkan; pembuka, pembesaran foto, dan player mengambang membutuhkan JavaScript.
 - Animasi bagian cerita muncul sekali saat bagian tersebut memasuki area pandang.
+- Animasi paket pada diagram berulang bergantian dari karyawan ke pendengar dan dari manajemen ke pendengar. Paket karyawan memakai warna aksen cokelat dan paket manajemen memakai biru. Keduanya berhenti sejenak di pendengar, menghilang, lalu mengulang dari awal tanpa diteruskan ke sisi lainnya. Satu siklus kedua arah berlangsung 4,4 detik. Gerakan paket dinonaktifkan saat reduced motion aktif.
 - Garis pada header mengikuti posisi scroll pembaca, tanpa menyimpan data pembaca.
 
 ## 4. Arah visual
@@ -239,7 +240,7 @@ Pertahankan keputusan berikut saat mengedit:
 - Gaya bahasa santai, mudah dipahami, sedikit humor, dan terasa personal.
 - Kejadian mengikuti cerita David. Jangan menambah percakapan, nama, lokasi, atau kejadian yang belum diberikan.
 - Analogi networking digunakan secukupnya: segmen jaringan, default gateway, paket data, dan rute.
-- Cerita yang dipercayakan kepada HR tidak semuanya diteruskan kepada manajemen. Animasi paket curhat berhenti di pendengar.
+- Cerita yang dipercayakan kepada HR tidak semuanya diteruskan kepada manajemen. Animasi paket cerita dari karyawan maupun manajemen berulang menuju pendengar dan berhenti di sana, tanpa diteruskan ke sisi lainnya.
 - Kalimat pagi memakai **bangun tidur, berdoa sejenak, lalu merapikan kasur**. Frasa **mengucap syukur** sudah dihapus atas permintaan David.
 - Dua foto pembuka tetap di dalam kartu, sebelum tombol.
 - Header pembuka dan halaman cerita memakai **ceritadavid.blog**; foto pembuka tanpa label nomor kenangan.
@@ -350,7 +351,7 @@ Daftar pemeriksaan manual:
 
 **Vol. 01 · David · 1 Oktober 2026 · Tebet, Jakarta Selatan**
 
-Tentang rekan kerja yang mau mendengar, dan kabar resign yang ternyata bikin kepikiran.
+Sedikit cerita tentang rekan kerja, obrolan di kantor, dan kabar resign.
 
 ![Rekan-rekan berfoto bersama di depan restoran Hattori.](assets/kumpul-lagi.jpg)
 

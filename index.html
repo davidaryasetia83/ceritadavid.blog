@@ -78,9 +78,24 @@
     .listener .node-icon { background: var(--ink); border-color: var(--ink); color: white; }
     .network-node small { display: block; font-size: .75rem; color: var(--muted); margin-top: .1rem; }
     .packet { position: absolute; top: 15px; left: 16.666%; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px #f2f4f6; opacity: 0; }
-    .network-note.is-visible .packet { animation: packet-arrival 2.2s ease .25s 1 forwards; }
+    .packet-management { left: calc(83.333% - 4px); background: var(--blue); }
+    .network-note.is-visible .packet { animation: packet-arrival 4.4s ease .25s infinite; }
+    .network-note.is-visible .packet-management { animation-name: packet-from-management; }
     .network-note figcaption { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #d9dee2; }
-    @keyframes packet-arrival { 0% { left: 16.666%; opacity: 0; } 12% { opacity: 1; } 72% { left: calc(50% - 4px); opacity: 1; } 100% { left: calc(50% - 4px); opacity: 0; } }
+    @keyframes packet-arrival {
+      0% { left: 16.666%; opacity: 0; }
+      6% { opacity: 1; }
+      36% { left: calc(50% - 4px); opacity: 1; }
+      48% { left: calc(50% - 4px); opacity: 0; }
+      49%, 100% { left: 16.666%; opacity: 0; }
+    }
+    @keyframes packet-from-management {
+      0%, 50% { left: calc(83.333% - 4px); opacity: 0; }
+      56% { opacity: 1; }
+      86% { left: calc(50% - 4px); opacity: 1; }
+      98% { left: calc(50% - 4px); opacity: 0; }
+      99%, 100% { left: calc(83.333% - 4px); opacity: 0; }
+    }
     .song-note { display: flex; gap: 1rem; align-items: center; padding: 1.2rem 0; margin: 2rem 0; border-block: 1px solid var(--line); }
     .song-note .music-mark { font-family: var(--serif); font-size: 2.3rem; color: var(--gold); width: 2.5rem; text-align: center; }
     .song-copy { flex: 1; min-width: 0; }
@@ -259,7 +274,7 @@
         <div class="hero-title-row">
           <h1 id="storyTitle" tabindex="-1">Let’s Journey <em>into the World.</em></h1>
           <div class="hero-aside">
-            <p class="deck">Tentang rekan kerja yang mau mendengar, dan kabar resign yang ternyata bikin kepikiran.</p>
+            <p class="deck">Sedikit cerita tentang rekan kerja, obrolan di kantor, dan kabar resign.</p>
             <p class="byline"><strong>David</strong><br><time datetime="2026-10-01">1 Oktober 2026</time> &nbsp;·&nbsp; ± 5 menit</p>
           </div>
         </div>
@@ -299,13 +314,14 @@
             <h2>Ada koneksi yang tidak terlihat di layar monitoring.</h2>
             <p>Sebagai orang yang sehari-hari berkutat dengan <em>network</em>, aku terbiasa memikirkan cara agar perangkat di segmen jaringan yang berbeda tetap bisa saling berkomunikasi. Tapi di kantor, ada koneksi yang jarang terlihat di layar monitoring: <strong>rasa percaya antara orang-orangnya.</strong> Kalau boleh memakai sedikit bahasa <em>network</em>, perannya mirip <em>default gateway</em>, pintu penghubung yang membantu komunikasi antar jaringan. Dalam cerita ini, dua sisi itu adalah karyawan dan manajemen, dengan posisi dan tanggung jawab yang berbeda.</p>
             <p>Kami datang membawa “paket data” masing-masing. Ada masukan, ada pertanyaan, kadang ada keluh kesah yang sudah terlalu panjang untuk diringkas dalam satu chat. Dia bersedia mendengarkan. Untungnya, kalau mau cerita, kami nggak perlu isi formulir atau bikin tiket dulu. Bisa langsung bicara sebagai sesama manusia.</p>
-            <figure class="network-note reveal" aria-label="Analogi HR sebagai penghubung antara karyawan dan manajemen. Sebuah paket curhat bergerak dari karyawan lalu berhenti di pendengar.">
+            <figure class="network-note reveal" aria-label="Analogi HR sebagai pendengar bagi karyawan dan manajemen. Paket cerita bergerak bergantian dari karyawan dan manajemen, lalu berhenti di pendengar tanpa diteruskan ke sisi lainnya.">
               <div class="network-heading">Sebuah analogi kecil</div>
               <div class="network-track" aria-hidden="true">
                 <div class="network-node"><div class="node-icon">01</div>Karyawan<small>Cerita &amp; masukan</small></div>
                 <div class="network-node listener"><div class="node-icon">HR</div>Pendengar<small>Ruang untuk percaya</small></div>
                 <div class="network-node"><div class="node-icon">02</div>Manajemen<small>Sudut pandang lain</small></div>
                 <span class="packet"></span>
+                <span class="packet packet-management"></span>
               </div>
               <figcaption>Ada cerita yang cukup sampai pada seseorang yang mau mendengar.</figcaption>
             </figure>
