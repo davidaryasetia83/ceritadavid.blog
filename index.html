@@ -156,11 +156,14 @@
       .goodbye-text::before { content: attr(data-text); content: attr(data-text) / ''; position: absolute; inset: 0; color: transparent; text-shadow: none; background: linear-gradient(100deg, transparent 40%, #fff6e2 50%, transparent 60%) 100% 0 / 250% 100% no-repeat; -webkit-background-clip: text; background-clip: text; opacity: 0; pointer-events: none; }
       .goodbye-text.is-shining::before { animation: goodbye-shine 1.3s ease-in-out; }
     }
-    .goodbye-spark { position: absolute; bottom: 45%; border-radius: 50%; background: #f3dcae; box-shadow: 0 0 6px 1px #dfc39499; opacity: 0; pointer-events: none; animation: spark-rise var(--dur) ease-out var(--delay) forwards; }
+    .goodbye-spark { position: absolute; bottom: 45%; border-radius: 50%; background: #f3dcae; box-shadow: 0 0 7px 1px #dfc39480; opacity: 0; pointer-events: none; animation: spark-rise var(--dur) ease-out var(--delay) forwards; }
     @keyframes goodbye-shine { from { opacity: 1; background-position: 100% 0; } to { opacity: 1; background-position: 0 0; } }
     @keyframes spark-rise {
       0% { opacity: 0; transform: translate(0, 0) scale(.4); }
-      20% { opacity: 1; }
+      15% { opacity: .85; }
+      35% { opacity: .35; }
+      55% { opacity: .8; }
+      75% { opacity: .3; }
       100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1); }
     }
     .signature { border-top: 1px solid #ffffff26; margin-top: 2.5rem; padding-top: 1.6rem; display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
@@ -691,16 +694,16 @@
         goodbyeText.classList.remove('is-shining');
         void goodbyeText.offsetWidth;
         goodbyeText.classList.add('is-shining');
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 22; i++) {
           const spark = document.createElement('span');
           const size = (2 + Math.random() * 3).toFixed(1) + 'px';
           spark.className = 'goodbye-spark';
           spark.style.width = spark.style.height = size;
           spark.style.left = (Math.random() * 100) + '%';
-          spark.style.setProperty('--dx', (Math.random() * 36 - 18) + 'px');
-          spark.style.setProperty('--dy', -(50 + Math.random() * 80) + 'px');
-          spark.style.setProperty('--dur', (1.3 + Math.random()) + 's');
-          spark.style.setProperty('--delay', (Math.random() * .9) + 's');
+          spark.style.setProperty('--dx', (Math.random() * 48 - 24) + 'px');
+          spark.style.setProperty('--dy', -(40 + Math.random() * 70) + 'px');
+          spark.style.setProperty('--dur', (3.2 + Math.random() * 1.8) + 's');
+          spark.style.setProperty('--delay', (Math.random() * 3.5) + 's');
           spark.addEventListener('animationend', () => spark.remove());
           goodbyeText.appendChild(spark);
         }
@@ -715,7 +718,7 @@
         goodbyeObserver.observe(goodbyeText);
       }
       goodbyeText.addEventListener('pointerenter', () => {
-        if (goodbyeText.classList.contains('is-lit') && Date.now() - lastGoodbyeShine > 2500) shineGoodbye();
+        if (goodbyeText.classList.contains('is-lit') && Date.now() - lastGoodbyeShine > 5000) shineGoodbye();
       });
 
       let revealObserver;
